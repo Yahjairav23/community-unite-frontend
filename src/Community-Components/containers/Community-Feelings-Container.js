@@ -1,5 +1,5 @@
 import React from 'react'
-import CommunityFeelingsList from '../component/Community-Feelings-List'
+import CommunityFeelingsList from '../components/Community-Feelings-List'
 
 const communityFeelings = (props) => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import CommunityReportsList from '../component/Community-Reports-List'
+import CommunityReportsList from '../components/Community-Reports-List'
 
 const communityReports = (props) => {
     return (

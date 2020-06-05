@@ -1,5 +1,5 @@
 import React from 'react'
-import CommentForm from '../component/Community-Comment-Form'
+import CommentForm from '../../Community-Components/components/Community-Comment-Form'
 
 
 class citizenProfileContainer extends React.Component {

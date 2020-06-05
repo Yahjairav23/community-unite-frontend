@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ReportListItem from './Report-List-Item'
+import ReportListItem from '../../General-Components/Report-List-Item'
 
 const communityReportsList = (props) => {
     
@@ -13,7 +13,7 @@ const communityReportsList = (props) => {
     )
 }
 
-const mapDispatchToProps = (state) => {
+const mapStateToProps = (state) => {
     
     return {
         reports: state.allReports
@@ -21,4 +21,4 @@ const mapDispatchToProps = (state) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(communityReportsList)
+export default connect(mapStateToProps)(communityReportsList)

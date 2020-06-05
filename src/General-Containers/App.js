@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch, withRouter } from "react-router-dom";
-import './App.css';
-import Navbar from './component/Navbar'
-import CommunityReports from './container/Community-Reports-Container'
-import CommunityFeelings from './container/Community-Feelings-Container'
-import CitizenProfileContainer from './container/Citizen-Profile-Container'
+import '../App.css';
+import Navbar from '../General-Components/Navbar'
+import CommunityReports from '../Community-Components/containers/Community-Reports-Container'
+import CommunityFeelings from '../Community-Components/containers/Community-Feelings-Container'
+import CitizenProfileContainer from '../Citizen-Components/containers/Citizen-Profile-Container'
 import {connect} from 'react-redux'
-import {fetchingAllReports, fetchingCommunityComments, fetchingAllPDs} from './redux/actions'
+import {fetchingAllReports, fetchingCommunityComments, fetchingAllPDs} from '../redux/actions'
 
 
 class App extends React.Component {
