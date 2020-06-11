@@ -8,14 +8,14 @@ import Box from '@material-ui/core/Box';
 
 
 class CitizenProfileContainer extends React.Component {
-    componentDidMount(){
-        const token = localStorage.getItem("token")
-        const userType = localStorage.getItem('userType')
-        debugger
-        if(token){
-            this.props.fetchingCurrentUser(token, userType)
-        }
-    }
+    // componentDidMount(){
+    //     const token = localStorage.getItem("token")
+    //     const userType = localStorage.getItem('userType')
+    
+    //     if(token){
+    //         this.props.fetchingCurrentUser(token, userType)
+    //     }
+    // }
 
     render(){
         return(
@@ -33,10 +33,10 @@ const mapStateToProps = (state) => ({
     currentUser: state.currentUser,
     userType: state.userType
   })
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      fetchingCurrentUser: (token, userType) => { dispatch( fetchingCurrentUser(token, userType) ) }
-    }
-  }
+//   const mapDispatchToProps = (dispatch) => {
+//     return {
+//       fetchingCurrentUser: (token, userType) => { dispatch( fetchingCurrentUser(token, userType) ) }
+//     }
+//   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CitizenProfileContainer)
+export default connect(mapStateToProps)(CitizenProfileContainer)

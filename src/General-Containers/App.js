@@ -13,6 +13,7 @@ import PoliceReports from '../Police-Components/containers/Reports-Container'
 import CommunityReports from '../Community-Components/containers/Community-Reports-Container'
 import CommunityFeelings from '../Community-Components/containers/Community-Feelings-Container'
 import CitizenProfileContainer from '../Citizen-Components/containers/Citizen-Profile-Container'
+import ReportDetails from '../General-Components/Report-Details';
 
 
 
@@ -37,8 +38,14 @@ class App extends React.Component {
       <div>
         <Navbar />
         <Switch>
+          <Route exact path='/reports/:id' render={(routerProps) =>{ 
+            const id = routerProps.match.params.id 
+            return <ReportDetails reportId={id}/>
+            }
+          }/>
           <Route exact path='/' component={HomePage}/>
-        <Route exact path='/police/reports' component={PoliceReports} />
+        <Route exact path='/police/reports' render={() => (
+          userType === "police" ? <PoliceReports/> : <Redirect to='/login'/> )}/>
         <Route exact path='/report-form' render={() => (
           userType === "police" ? <ReportForm/> : userType === "citizen" ? <Redirect to="/citizen/profile"/> : <Redirect to='/login'/>
         )} />
