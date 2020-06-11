@@ -7,27 +7,38 @@ class commentForm extends React.Component {
     constructor(){
         super()
         this.state = {
-            comment: ''
+            description: ''
 
         }
     }
 
     changeField = (e) => {
-        this.setState({comment: e.target.value})
+        this.setState({description: e.target.value})
     }
-// Need to fix this so that current user is used as the person writing the comment.
+    
     submitForm = (e) => {
         e.preventDefault()
-        let commentObj = {description: this.state.comment, police_department_id: this.props.policeDepartment.id, citizen_id: 8, date: new Date()}
+        let commentObj = {description: this.state.description, police_department_id: this.props.policeDepartment.id, citizen_id: this.props.currentUser.id, date: new Date()}
         this.props.creatingComment(commentObj)
         e.target.reset()
+        alert('Thank you for your feedback!')
+
+        //I can add a local state property that can change on submit of comment and allow this allert to be displayed. 
+        //Better looking alert! Should place in render with a conditional.
+        // <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        // <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        // <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //     <span aria-hidden="true">&times;</span>
+        // </button>
+        // </div>
     }
 
     render(){
         return(
             <div>
-                <form onSubmit={this.submitForm}>
-                    <input type="text" placeholder="How do you think your Police Department is performing?" onChange={this.changeField} />
+                <form onSubmit={(e) => this.submitForm(e)}>
+                    <textarea onChange={this.changeField} class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="How do you think your Police Department is performing?"></textarea>
+                    {/* <input type="text" placeholder="How do you think your Police Department is performing?" onChange={this.changeField} /> */}
                     <input type='submit' value='Submit' />
                 </form>
             </div>
@@ -35,15 +46,17 @@ class commentForm extends React.Component {
     }
 }
 
-const MapStateToProps = (state) => ({
-    policeDepartment: state.policeDepartment
+const mapStateToProps = (state) => ({
+    policeDepartment: state.policeDepartment,
+    currentUser: state.currentUser,
+    communityComments: state.communityFeelings
 })
 
 const mapDispatchToProps = (dispatch) => {
     
     return {
-        creatingComment: (comment) => {dispatch( creatingComment(comment))}
+        creatingComment: (comment, commentArr) => {dispatch( creatingComment(comment, commentArr))}
     }
 }
 
-export default connect(MapStateToProps, mapDispatchToProps)(commentForm)
+export default connect(mapStateToProps, mapDispatchToProps)(commentForm)

@@ -1,7 +1,43 @@
+const CITIZENS = "http://localhost:3000/api/v1/citizens"
 const REPORTS = "http://localhost:3000/reports"
 const COMMENTS = "http://localhost:3000/comments"
 const PD = "http://localhost:3000/police_departments"
 
+
+function setUserType(type){
+    return {type: "SET_USER_TYPE", payload: type}
+}
+
+function setCurrentUser(user){
+    return {type: "LOG_IN_USER", payload: user}
+}
+
+function fetchingCurrentUser(token, userType){
+//    debugger
+    return (dispatch) => {
+        fetch(`http://localhost:3000/api/v1/${userType}_decode_token`, {
+            headers: {
+              "Authenticate": localStorage.token
+            }
+          })
+        .then(resp => resp.json())
+        .then(user => {
+            dispatch(
+            setCurrentUser(user)
+        )
+        dispatch(
+            setUserType(userType)
+        )
+        }
+        )
+    }
+}
+
+function logOutUser(){
+    return {type: 'LOG_OUT_USER'}
+}
+
+//////////////////////////////////
 
 function fetchedAllPDs(police_departments){
     return {type: "SET_POLICE_DEPARTMENT", payload: police_departments}
@@ -31,6 +67,10 @@ function fetchingAllReports(){
             fetchedAllReports(reports)
         ))
     }
+}
+
+function addingToReportArr(report){
+    return {type: "ADD_TO_ALL_REPORTS_ARR", payload: report}
 }
 
 //////////////////////////////////
@@ -77,4 +117,4 @@ function creatingComment(commentObj){
 }
 
 
-export {fetchingAllReports, fetchingCommunityComments, creatingComment, fetchingAllPDs}
+export {addingToReportArr, setUserType, logOutUser, setCurrentUser, fetchingAllReports, fetchingCommunityComments, creatingComment, fetchingAllPDs, fetchingCurrentUser}

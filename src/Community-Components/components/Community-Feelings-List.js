@@ -8,22 +8,30 @@ const communityFeelingsList = (props) => {
     
     return (
         <div>
-            <h3>Let Your Voice Be Heard</h3>
-            <CommentForm />
+            {props.userType === "citizen" ? 
+            <div class="form-group">
+                <h5 >Let Your Voice Be Heard</h5>
+                <CommentForm/>
+            </div>
+            :
+            null}
+            {/* <h3>Let Your Voice Be Heard</h3>
+            <CommentForm /> */}
+            <div class="dropdown-divider"></div>
             <h3>Community Comments</h3>
-            {props.communityComments.map(comment => (
-                <CommunityFeeling comment={comment} key={comment.id}/>
-            ))}
+            <div class="list-group">
+                {props.communityComments.map(comment => (
+                    <CommunityFeeling comment={comment} key={comment.id}/>
+                ))}
+            </div>
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    
-    return {
+const mapStateToProps = (state) => ({
+        userType: state.userType,
         communityComments: state.communityFeelings
-    }
-}
+})
 
 
 export default connect(mapStateToProps)(communityFeelingsList)

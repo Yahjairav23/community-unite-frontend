@@ -5,7 +5,7 @@ import ReportListItem from '../../General-Components/Report-List-Item'
 const communityReportsList = (props) => {
     
     return (
-        <div>
+        <div class="list-group">
             {props.reports.map(report => (
                 <ReportListItem report={report} key={report.id}/>
             ))}
