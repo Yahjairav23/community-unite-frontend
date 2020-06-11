@@ -31,11 +31,14 @@ class ReportDetails extends React.Component {
                             <p class="card-text">{this.state.report.location}<br/>{this.state.report.city}, {this.state.report.state}</p>
                         </div>
                     </div>
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Citizen Involved</h5>
+                {this.state.citizen.name ?
                             <p class="card-text">{this.state.citizen.name}</p>
+                            :
+                            <p class="card-text">Citizen Name Not Available</p>
+                        }
                         </div>
                     </div>
 

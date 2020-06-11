@@ -66,6 +66,7 @@ class ReportForm extends React.Component {
         })
         .then(resp => resp.json())
         .then(data => {
+            // debugger
             this.setState({new_report: data})
             this.props.addReportToArr(data)
         })
@@ -77,7 +78,7 @@ class ReportForm extends React.Component {
                 <Typography component="h1" varient="h5">
                     Report
                 </Typography>
-                {this.state.new_report ? <Redirect to="/community-reports"/> :
+                {this.state.new_report ? <Redirect to={`/reports/${this.state.new_report.id}`}/> :
          this.state.civilian === null ?
             <Container component="main" maxWidth='sm'>
                 <form onSubmit={(e) => {this.findCivilian(e, this.state)}}>
@@ -240,7 +241,7 @@ class ReportForm extends React.Component {
                         value={this.state.civilian.state_id}
                     />
                     <TextField
-                        // onChange={this.fieldChange}
+                        onChange={this.fieldChange}
                         variant="outlined"
                         margin="normal"
                         required
@@ -254,7 +255,7 @@ class ReportForm extends React.Component {
                 </Container>
                 <Container>
                     <TextField
-                        // onChange={this.fieldChange}
+                        onChange={this.fieldChange}
                         variant="outlined"
                         margin="normal"
                         // required
@@ -267,12 +268,12 @@ class ReportForm extends React.Component {
                         value={this.state.civilian.phone_number}
                     />
                     <TextField
-                        // onChange={this.fieldChange}
+                        onChange={this.fieldChange}
                         variant="outlined"
                         margin="normal"
                         // required
                         // fullWidth
-                        type="email"
+                        // type="e  mail"
                         name="citizenEmail"
                         label="Citizen Email"
                         id="citizenEmail"
@@ -282,10 +283,10 @@ class ReportForm extends React.Component {
                 </Container>
                 <Container>
                     <TextField
-                        // onChange={this.fieldChange}
+                        onChange={this.fieldChange}
                         variant="outlined"
                         margin="normal"
-                        required
+                        // required
                         // fullWidth
                         name="citizenAddress"
                         label="Citizen Address"
@@ -294,7 +295,7 @@ class ReportForm extends React.Component {
                         value={this.state.civilian.address}
                     />
                     <TextField
-                        // onChange={this.fieldChange}
+                        onChange={this.fieldChange}
                         variant="outlined"
                         margin="normal"
                         // fullWidth
@@ -306,10 +307,10 @@ class ReportForm extends React.Component {
                 </Container>
                 <Container>
                     <TextField
-                        // onChange={this.fieldChange}
+                        onChange={this.fieldChange}
                         variant="outlined"
                         margin="normal"
-                        required
+                        // required
                         // fullWidth
                         name="citizenCity"
                         label="City"
@@ -318,10 +319,10 @@ class ReportForm extends React.Component {
                         value={this.state.civilian.city}
                     />
                     <TextField
-                        // onChange={this.fieldChange}
+                        onChange={this.fieldChange}
                         variant="outlined"
                         margin="normal"
-                        required
+                        // required
                         // fullWidth
                         name="citizenState"
                         label="State"
