@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {logOutUser} from '../redux/actions'
+import logo from '../images/YOUnite-still.png'
+
 // import {Link, Redirect} from 'react-router-dom'
 
 //material-ui imports
@@ -12,69 +14,56 @@ class navbar extends React.Component {
     
     render(){
         return (
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="/">Logo</a>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                       
-                        <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Community</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/community-reports">Community Reports</a>
-                                <a class="dropdown-item" href="/community-feelings">Community Feelings</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Weekly News Letter</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Department</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Resources</a>
-                        </li>
-                    </ul>
+            <div class='bar rounded'>
 
-                    <ul class="navbar-nav mr-auto my-2 my-lg-0">  
-                        
-                    
+                <header class='blog-header py-3 border-bottom' style={{"background-color": "#071e22"}}>
+                    <div class="row flex-nowrap justify-content-between align-items-center">
+                        <div class="col-4 pt-1">
                         {this.props.userType === "citizen" ?
-                            <li class="nav-item"> 
-                            <a class="nav-link" href="/citizen/profile">Profile</a>
-                            </li>
+                        <a class="p-2 text-muted" href="/citizen/profile">Profile</a>
+                        :
+                        null
+                        }
+                        {this.props.userType === "police" ?
+                            <a class="p-2 text-muted" href="/report-form">Report Form</a>
                             :
                             null
                         }
                         {this.props.userType === "police" ?
-                            <li class="nav-item"> 
-                            <a class="nav-link" href="/report-form">Report Form</a>
-                            </li>
+                            <a class="p-2 text-muted" href="/police/profile">Reports</a>
                             :
                             null
                         }
-                        {this.props.userType === "police" ?
-                            <li class="nav-item"> 
-                            <a class="nav-link" href="/police/reports">Reports</a>
-                            </li>
-                            :
-                            null
-                        }
+                        </div>
 
-                    <li class="nav-item">
+                        <div class="col-4 text-center">
+                            <a class="blog-header-logo" href='/'><img src={logo} width='60' height='60'/></a>
+                        </div>
+
+                        <div class="col-4 d-flex justify-content-end align-items-center">
                         {this.props.currentUser ? 
-                            <a class="nav-link" href="/login" onClick={
-                                () => {
-                                    localStorage.clear()
-                                }
-                            }>Log Out</a>
-                            : 
-                            <a class="nav-link" href="/login">Sign In</a>}
-                        </li> 
-                    </ul>
+                        <a class="p-2 text-muted" href="/login" onClick={
+                            () => {
+                                localStorage.clear()
+                            }
+                        }>Log Out</a>
+                        : 
+                        <a class="p-2 text-muted" href="/login">Sign In</a>}
+                        </div>
+                    </div>
+                </header>
+
+                <div class="nav-scroller py-1 mb-2">
+                    <nav class="nav d-flex justify-content-between" >
+                            <a class="p-2 text-muted" href="/community-reports">Community Reports</a>
+                            <a class="p-2 text-muted" href="/community-feelings">Community Feelings</a>
+                            <a class="p-2 text-muted" href="#">Weekly News Letter</a>
+                            <a class="p-2 text-muted" href="#">Department</a>
+                            <a class="p-2 text-muted" href="#">Resources</a>
+                    </nav>
                 </div>
-            
-            </nav>
+
+            </div>
         )
     }
 }

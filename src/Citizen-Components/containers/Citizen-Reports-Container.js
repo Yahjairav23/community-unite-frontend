@@ -7,7 +7,7 @@ class ReportsContainer extends React.Component {
         // debugger
         return(
             <div>
-                <div>My Reports</div>
+                <h2>My Reports</h2>
                 <div class="accordion" id="accordionExample">
                     {this.props.currentUser ? this.props.currentUser.reports.map( report => (
                         <Report report={report} key={report.id}/> 

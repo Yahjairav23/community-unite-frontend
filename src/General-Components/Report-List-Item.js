@@ -3,19 +3,20 @@ import {connect} from 'react-redux'
 
 const ReportsListItem = (props) => {
     return (
-        <div>
+        <div class="col px-md-5">
             <a href={`/reports/${props.report.id}`} class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{props.report.location}</h5>
-            <small class="text-muted">Date: {props.report.date}</small>
+            <strong class="mb-1 text-capitalize">{props.report.location}</strong>
+            <small class="text-muted">{new Date(props.report.date).toDateString()}</small>
             </div>
             {props.userType === "police" ? 
-                <p class="mb-1">Location: {props.report.location}  {props.report.city}, {props.report.state}</p>
+                <p class="mb-1 text-capitalize"><strong>Location: </strong>{props.report.location}  {props.report.city}, {props.report.state}</p>
                 :
                 null
             }
-            <p class="mb-1">Description Of Incident: {props.report.incident_description}</p>
-            <p class="mb-1">How The Issue Was Resolved: {props.report.resolution}</p>
+            <div class="dropdown-divider"></div>
+            <p class="mb-1"><strong>Description Of Incident: </strong><br/>{props.report.incident_description}</p>
+            <p class="mb-1"><strong>How The Issue Was Resolved: </strong><br/>{props.report.resolution}</p>
             </a>
         </div>
     )

@@ -7,7 +7,7 @@ import CommentForm from './Community-Comment-Form'
 const communityFeelingsList = (props) => {
     
     return (
-        <div>
+        <div class="col px-md-5">
             {props.userType === "citizen" ? 
             <div class="form-group">
                 <h5 >Let Your Voice Be Heard</h5>
@@ -15,9 +15,7 @@ const communityFeelingsList = (props) => {
             </div>
             :
             null}
-            {/* <h3>Let Your Voice Be Heard</h3>
-            <CommentForm /> */}
-            <div class="dropdown-divider"></div>
+            {/* <div class="dropdown-divider"></div> */}
             <h3>Community Comments</h3>
             <div class="list-group">
                 {props.communityComments.map(comment => (

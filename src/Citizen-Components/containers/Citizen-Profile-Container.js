@@ -1,42 +1,59 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchingCurrentUser} from '../../redux/actions'
 import CommentForm from '../../Community-Components/components/Community-Comment-Form'
 import CitizenReportsContainer from './Citizen-Reports-Container'
-import Box from '@material-ui/core/Box';
+import Report from '../../General-Components/Report-List-Item'
+
 
 
 
 class CitizenProfileContainer extends React.Component {
-    // componentDidMount(){
-    //     const token = localStorage.getItem("token")
-    //     const userType = localStorage.getItem('userType')
-    
-    //     if(token){
-    //         this.props.fetchingCurrentUser(token, userType)
-    //     }
-    // }
 
     render(){
+        
         return(
-            <Box component="span" p={[2,3,4]}>
-                <div class="list-group">{this.props.currentUser !== null ? <CitizenReportsContainer/> : null}</div>
-                <div>My Escalations</div>
-                <div>Comment Submit</div>
-                <CommentForm />
-            </Box>
+            <div class='container-fluid'>
+                    {this.props.currentUser !== null ? 
+
+                    <div>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <div class="list-group"><CitizenReportsContainer/> </div>
+                            </div>
+
+                            <div class='col-md-6'>
+                                <h1>Reports In Escalation</h1>
+                                <div class="d-flex justify-content-center flex-column">
+                                    {this.props.escalatedReports.length > 0 ?
+                                    this.props.allReports.filter(report => report.citizen_id === this.props.currentUser.id && this.props.escalations.find(escalation => escalation.report_id === report.id))
+                                    .map(report => (
+                                    <Report report={report} key={report.id}/>
+                                    )
+                                    )
+                                    : 
+                                    null}
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="dropdown-divider"></div>
+
+                        <div>Comment Submit</div>
+                        <CommentForm />
+                    </div>
+
+                : null}
+            </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
     currentUser: state.currentUser,
-    userType: state.userType
+    userType: state.userType,
+    escalatedReports: state.escalatedReports,
+    allReports: state.allReports,
+    escalations: state.escalations
   })
-//   const mapDispatchToProps = (dispatch) => {
-//     return {
-//       fetchingCurrentUser: (token, userType) => { dispatch( fetchingCurrentUser(token, userType) ) }
-//     }
-//   }
 
 export default connect(mapStateToProps)(CitizenProfileContainer)

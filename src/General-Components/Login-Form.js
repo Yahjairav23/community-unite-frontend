@@ -60,12 +60,12 @@ class loginForm extends React.Component {
             inputValue: ''
         }
         
-        if(this.props.userType === 'citizen'){
-            values.inputValue = 'email'
-            values.labelValue = 'Email Address'
-        }else if(this.props.userType === 'police'){
+        if(this.props.userType === 'police' ){
             values.inputValue = 'badge_number'
             values.labelValue = 'Badge Number'
+        }else{
+            values.inputValue = 'email'
+            values.labelValue = 'Email Address'
         }
         return values
     }
@@ -76,10 +76,13 @@ class loginForm extends React.Component {
         return(
             
             this.props.currentUser === null ?
-                <Container component="main" maxWidth='xs'>
-                    <Avatar>
+            <div class="container">
+                <div class="row">
+                {/* <div class="col"></div> */}
+                <div class="col-md-10">
+                    {/* <Avatar>
                         <LockOutlinedIcon/>
-                    </Avatar>
+                    </Avatar> */}
                     <Typography component="h1" varient="h5">
                         Sign In
                     </Typography>
@@ -119,15 +122,20 @@ class loginForm extends React.Component {
                         Sign In
                     </Button>
                     </form>
-
-                </Container>
+                    </div>
+                </div>
+                    {/* <div class="col"></div> */}
+            </div>
                 :
-            this.props.currentUser.state_id ?
-                <Redirect to='/citizen/profile'/> 
-                :
-            this.props.currentUser.badge_number ?
-                <Redirect to='/report-form'/>
-                :
+            // this.props.currentUser.state_id ?
+            //     <Redirect to='/citizen/profile'/> 
+            //     :
+            // this.props.currentUser.badge_number ?
+            //     <Redirect to='/report-form'/>
+            //     :
+            // !this.props.currentUser.gender ?
+            //     <Redirect to='/agency/profile'/>
+            //     :
                 <Redirect to='/'/>
             
         )

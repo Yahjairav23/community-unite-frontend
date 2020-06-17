@@ -2,6 +2,8 @@ const CITIZENS = "http://localhost:3000/api/v1/citizens"
 const REPORTS = "http://localhost:3000/reports"
 const COMMENTS = "http://localhost:3000/comments"
 const PD = "http://localhost:3000/police_departments"
+const ACTIONTAKEN = "http://localhost:3000/action_takens"
+const ESCALATIONS = "http://localhost:3000/escalations"
 
 
 function setUserType(type){
@@ -91,6 +93,57 @@ function fetchingCommunityComments(){
 
 //////////////////////////////////
 
+function fetchedAllEscalations(escalations){
+    return {type: "FETCHED_ALL_ESCALATIONS", payload: escalations}
+}
+
+function fetchingAllEscalations(){
+    return (dispatch) => {
+        fetch(ESCALATIONS)
+        .then(resp => resp.json())
+        .then(escalations => dispatch(
+            fetchedAllEscalations(escalations)
+        ))
+    }
+}
+
+function createdEscalation(escalation){
+    return {type: 'CREATED_NEW_ESCALATION', payload: escalation}
+}
+
+function creatingEscalation(escalationObj){
+    return (dispatch) => {
+        fetch(ESCALATIONS,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(escalationObj)
+        })
+        .then(resp => resp.json())
+        .then(escalation => createdEscalation(escalation))
+    }
+
+}
+
+//////////////////////////////////
+
+function fetchedAllEscalatedReports(escalated_reports){
+    return {type: "FETCHED_ESCALATED_REPORTS", payload: escalated_reports}
+}
+
+function fetchingAllEscalatedReports(){
+    return (dispatch) => {
+        fetch('http://localhost:3000/escalated_reports')
+        .then(resp => resp.json())
+        .then(escalations => dispatch(
+            fetchedAllEscalatedReports(escalations)
+        ))
+    }
+}
+
+//////////////////////////////////
+
 function commentCreated(comments){
     return {type: "SUBMITTED_NEW_COMMENT", payload: comments}
 }
@@ -116,5 +169,49 @@ function creatingComment(commentObj){
     }
 }
 
+//////////////////////////////////
 
-export {addingToReportArr, setUserType, logOutUser, setCurrentUser, fetchingAllReports, fetchingCommunityComments, creatingComment, fetchingAllPDs, fetchingCurrentUser}
+function fetchedAllActions(actions){
+    // debugger
+    return {
+        type: "FETCHED_ALL_ACTIONS", payload: actions
+    }
+}
+
+function fetchingAllActions(){
+    // debugger
+    return (dispatch) => {
+        fetch(ACTIONTAKEN)
+        .then(resp => resp.json())
+        .then(actions => dispatch(
+            fetchedAllActions(actions)
+        ))
+    }
+}
+
+function actionCreated(action){
+    return {type: 'ACTION_CREATED', payload: action}
+}
+
+function creatingActionTaken(actionTakenObj){
+
+    return (dispatch) => {
+        fetch(ACTIONTAKEN, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(actionTakenObj)
+        })
+        .then(resp => resp.json())
+        .then(action => {
+            dispatch(
+                actionCreated(action)
+            )
+        })
+
+    }
+}
+
+
+export {createdEscalation, creatingEscalation, fetchingAllEscalatedReports, fetchingAllEscalations, fetchingAllActions, creatingActionTaken, addingToReportArr, setUserType, logOutUser, setCurrentUser, fetchingAllReports, fetchingCommunityComments, creatingComment, fetchingAllPDs, fetchingCurrentUser}

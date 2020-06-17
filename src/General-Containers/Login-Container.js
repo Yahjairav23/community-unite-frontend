@@ -15,6 +15,9 @@ class loginContainer extends React.Component {
 
                 {this.props.userType ? <LoginForm/> : null}
                 <br/>
+                <div class="container">
+                <div class="row">
+                <div class="col-md-10 align-self-center">
                 <Button
                     onClick={()=>{this.props.setUserType('citizen')}}
                     variant="contained" 
@@ -33,6 +36,17 @@ class loginContainer extends React.Component {
                 >
                     Police
                 </Button>
+                <Button
+                    onClick={()=>{this.props.setUserType('oversightAgency')}}
+                    variant="contained" 
+                    color='primary'
+                    size='large'
+                >
+                    Oversight Agency
+                </Button>
+                </div>
+                </div>
+                </div>
                 <br/>
                 <br/>
                 {/* <Button

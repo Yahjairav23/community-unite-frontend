@@ -75,43 +75,67 @@ class ReportForm extends React.Component {
     render(){
         return(
             <div>
-                <Typography component="h1" varient="h5">
-                    Report
-                </Typography>
+                <h1>Report</h1>
                 {this.state.new_report ? <Redirect to={`/reports/${this.state.new_report.id}`}/> :
          this.state.civilian === null ?
-            <Container component="main" maxWidth='sm'>
-                <form onSubmit={(e) => {this.findCivilian(e, this.state)}}>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="citizenId"
-                        label="Citizen ID"
-                        id="citizenId"
-                        autoComplete="citizenId"
-                    />
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="citizenIdValidate"
-                        label="Verify Citizen ID"
-                        id="citizenIdValidate"
-                        autoComplete="citizenIdValidate"
-                    />
-                    <Button
-                        type='submit'
-                        // fullWidth
-                        variant='contained'
-                        color='primary'
-                    >Submit</Button>
-                </form>
-            </Container>
+            <div class='view'>
+                <div class='container'>
+                    <form onSubmit={(e) => {this.findCivilian(e, this.state)}}>
+                    <div class="row100">
+                        <div class="col">
+                            <div class='inputBox'>
+                                {/* <TextField
+                                    onChange={this.fieldChange}
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    // fullWidth
+                                    name="citizenId"
+                                    label="Citizen ID"
+                                    id="citizenId"
+                                    autoComplete="citizenId"
+                                /> */}
+                                {/* <label for='citizenId'>Citizen ID</label> */}
+                                <input type='text' name='citizenId' required='required' onChange={this.fieldChange}/>
+                                <span class='text'>Citizen ID</span>
+                                <span class='line'></span>
+                            </div>
+                        </div>
+                        <div class='inputBox'>
+                            <div class="col">
+                                {/* <TextField
+                                    onChange={this.fieldChange}
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    // fullWidth
+                                    name="citizenIdValidate"
+                                    label="Verify Citizen ID"
+                                    id="citizenIdValidate"
+                                    autoComplete="citizenIdValidate"
+                                /> */}
+                                {/* <label for='citizenIdValidate'>Validate Citizen ID</label> */}
+                                <input type='text' name='citizenIdValidate' onChange={this.fieldChange}/>
+                                <span class='text'>Validate Citizen ID</span>
+                                <span class='line'></span>
+                            </div>
+                        </div>
+                        <div class="row100">
+                            <div class='col'>
+                                <input type='submit' value='Submit'/>
+                            </div>
+                        </div>
+                    </div>
+                        {/* <Button
+                            type='submit'
+                            // fullWidth
+                            variant='contained'
+                            color='primary'
+                        >Submit</Button> */}
+                        
+                    </form>
+                </div>
+            </div>
             :
             <Container component="main" maxWidth='lg'>
                 

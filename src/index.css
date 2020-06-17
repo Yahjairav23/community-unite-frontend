@@ -1,13 +1,157 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  /* margin: 0; */
+  margin-left: 100px;
+  margin-right: 100px;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #e5e5e5;
+  
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif; */
+  font-family: 'Roboto', 'Helvetica', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.bar {
+  position: relative;
+  top: 0;
+  margin-bottom: 0 auto;
+  /* background-color: #C2D3CD; */
+}
+
+.jumbo-box .jumbotron {
+  background-color: #071E22;
+  margin-top: 0 auto;
+
+}
+
+.home {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 25 px;
+
+  width: 100%;
+  max-width: 768px;
+  height: 100vh;
+}
+
+.title {
+  position: relative;
+  color: #F5B700;
+  font-size: 36px;
+  text-align: center;
+  font-weight: 900;
+  margin: 15px 0px;
+  
+  left: 100%;
+
+  animation: slideIn 1s 0.5s forwards cubic-bezier(.5, .5, .5, 1.5)
+}
+
+.title span {
+  font-weight: 300;
+}
+
+.content {
+  position: relative;
+  color: #e5e5e5;
+  opacity: 0.75;
+  font-size: 18px;
+  margin: 15px 0px;
+
+  top: -100%;
+  animation: fallIn .7s linear 1.5s forwards;
+}
+
+.animated-btn {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  padding: 0px;
+
+  color: #e5e5e5;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+
+  opacity: 0;
+
+  border: 2px solid #C2D3CD;
+
+  background-image: linear-gradient(to right, #C2D3CD 50%, transparent 50%);
+  background-position: 100% 0% ;
+  background-size: 200% 100%;
+  transition: 0.5s;
+
+  animation: fadeIn 1s linear 2.5s forwards;
+}
+
+.btn:hover {
+  color: #071E22;
+  background-position:  0% 50%;
+  box-shadow: 3px 3px 6px #071E22;
+}
+
+@keyframes slideIn {
+  from { left: -100%; }
+  to { left: 0%; }
+}
+
+@keyframes fallIn {
+  from { top: -100%; }
+  to { top: 0%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* A litle styling for the report form*/
+/* .view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.container{
+  position: relative;
+  width: 50%;
+  padding: 20px;
+}
+
+.container .row100 {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(autofit, minmax(300px, 1fr));
+
+}
+
+.container .row100 .col {
+  position: relative;
+  width: 100%;
+  padding: 0 10px;
+  margin: 30px 0 10px;
+  transition: 0.5s;
+}
+
+.container .row100 .inputbox {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  color: #071E22;
+} */
+/* end of report form styling*/
