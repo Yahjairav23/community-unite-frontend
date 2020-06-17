@@ -4,6 +4,8 @@ import {createdEscalation} from '../redux/actions'
 
 
 import Escalation from './Escalation-Details'
+import ReportCommentForm from './Report-Comment-Form'
+import ReportComment from './Report-Comment'
 
 class ReportDetails extends React.Component {
 
@@ -19,7 +21,7 @@ class ReportDetails extends React.Component {
         .then(resp => resp.json())
         .then(report => {
             // const escalation = this.props.escalations.find(escalation => escalation.report_id === report.id)
-            this.setState({report: report, citizen: report.citizen, police: report.police, escalation: report.escalation
+            this.setState({report: report, citizen: report.citizen, police: report.police, escalation: report.escalation, comments: report.comments
         })
         })
     }
@@ -49,6 +51,23 @@ class ReportDetails extends React.Component {
             this.props.createdEscalation(escalation)
         })
         
+    }
+
+    updateComments = (commentObj) => {
+        const id = this.props.reportId
+        
+        fetch(`http://localhost:3000/reports/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(commentObj)
+        })
+        .then(resp => resp.json())
+        .then(report => {
+            this.setState({report: report, citizen: report.citizen, police: report.police, escalation: report.escalation, comments: report.comments
+        })
+        })
     }
 
     
@@ -186,15 +205,24 @@ class ReportDetails extends React.Component {
                 {this.state.escalation ? <div class="card">
                     <Escalation escalation={this.state.escalation}/>
                 </div> : null}
+
+                <div class='card'>
+                    <h2>Comments From {this.state.citizen.name}</h2>
+                    {this.props.userType === 'citizen' && this.props.currentUser.id === this.state.citizen.id ? <ReportCommentForm updateComment={this.updateComments}/> : null}
+                
+                
+                    {this.state.comments.length>0 ? this.state.comments.map(comment => <ReportComment comment={comment}/>) : <div>No Comments At This Time.</div>}
+                </div>
             </div>
             :
-            null
+            <div>Information Not Available At This Time</div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
     userType: state.userType,
+    currentUser: state.currentUser,
     escalations: state.escalation
 })
 
