@@ -8,12 +8,12 @@ class Escalation extends React.Component {
     constructor(){
         super()
         this.state = {
-            actions: []
+            actions: [],
         }
     }
 
     componentDidMount = () => {
-        this.setState({actions: this.props.escalation.action_takens})
+        this.setState({actions: this.props.escalation.action_takens, escalationStatus: this.props.escalation.status})
     }
 
     updateActions = (actionTakenObj) => {
@@ -32,11 +32,24 @@ class Escalation extends React.Component {
         })
     } 
 
+    updateEscalationStatus = () => {
+        fetch(`http://localhost:3000/escalations/${this.props.escalation.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({status: 'resolved'})
+        })
+        .then(resp => resp.json())
+        .then( escalation => this.setState({escalationStatus: escalation.status}))
+    }
+
     render(){
         return(
             <div>
                 <div class="card-body">
-                    <strong class="card-text">Escalation Status: {this.props.escalation.status.toUpperCase()}</strong>
+                    <strong class="card-text">Escalation Status: <span class="text-uppercase">{this.state.escalationStatus}</span></strong>
+                    {this.state.escalationStatus === "active" ? <button onClick={this.updateEscalationStatus}>Mark Resolved</button> : null}
                 </div>
                 <div class="card-body">
                     <h4 class="card-title text-center">Actions Taken</h4>

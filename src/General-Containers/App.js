@@ -66,7 +66,7 @@ class App extends React.Component {
         <Route exact path='/citizen/profile' render={() => (
           userType === "citizen" ? <CitizenProfileContainer /> : userType === "police" ? <Redirect to='/report-form'/> : <Redirect to='/agency/profile'/>
         )}/>
-        <Route exact path='/agency/profile' render={() => (
+        <Route exact path='/oversightAgency/profile' render={() => (
           userType === "oversightAgency" ? <AgencyProfileContainer /> : userType === "/" 
         )}/>
         

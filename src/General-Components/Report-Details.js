@@ -70,7 +70,7 @@ class ReportDetails extends React.Component {
                                 this.handleSubmit()
                                 e.target.reset()
                             }}>
-                                <input onChange={this.fieldChange} type='text' name='reason' placeholder='Please provide a valid reason for your escalation request.'/>
+                                <textarea class="form-control" onChange={this.fieldChange} type='text' name='reason' placeholder='Please provide a valid reason for your escalation request.'/>
                                 <input type='submit' value='Submit'/>
                             </form>
                         </div>

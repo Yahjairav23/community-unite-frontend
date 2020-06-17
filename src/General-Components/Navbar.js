@@ -24,6 +24,11 @@ class navbar extends React.Component {
                         :
                         null
                         }
+                        {this.props.userType === "oversightAgency" ?
+                        <a class="p-2 text-muted" href="/oversightAgency/profile">Profile</a>
+                        :
+                        null
+                        }
                         {this.props.userType === "police" ?
                             <a class="p-2 text-muted" href="/report-form">Report Form</a>
                             :
