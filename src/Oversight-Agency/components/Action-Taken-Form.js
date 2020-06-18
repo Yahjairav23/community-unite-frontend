@@ -26,15 +26,14 @@ class ActionTakenForm extends React.Component {
     render(){
         return(
             <div>
-                action taken form
                 <form onSubmit={(e)=>{
                     e.preventDefault()
                     this.props.updateActions(this.state)
                     e.target.reset()
                 }}>
-                    <input onChange={this.handleChange} required type='text' name="description" placeholder='Please provide any available updates...'/>
-                    <input onChange={this.handleChange} required type='date' name='date'/>
-                    <input type='submit' value='Submit'/>
+                    <div class="action-text-field"><textarea onChange={this.handleChange} required type='text' name="description" rows="5" placeholder='Please provide any available updates...'/><br/></div>
+                    <div class='action-date-field'><input onChange={this.handleChange} required type='date' name='date'/></div>
+                    <div class='action-date-submit'><input class="escalation-status-btn" type='submit' value='Submit'/></div>
                 </form>
             </div>
         )

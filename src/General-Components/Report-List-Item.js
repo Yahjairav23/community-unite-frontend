@@ -2,9 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 const ReportsListItem = (props) => {
+    const cardLink = props.path ? null : `/reports/${props.report.id}`
     return (
         <div class="col px-md-5">
-            <a href={`/reports/${props.report.id}`} class="list-group-item list-group-item-action">
+            <a href={cardLink} class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
             <strong class="mb-1 text-capitalize">{props.report.location}</strong>
             <small class="text-muted">{new Date(props.report.date).toDateString()}</small>

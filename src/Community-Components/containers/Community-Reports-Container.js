@@ -4,7 +4,7 @@ import CommunityReportsList from '../components/Community-Reports-List'
 const communityReports = (props) => {
     return (
         <div>
-            <h1 class='text-center'>Community Reports</h1>
+            <div class='first-header'>Community</div><div class='second-header'>Reports</div>
             <CommunityReportsList />
         </div>
     )

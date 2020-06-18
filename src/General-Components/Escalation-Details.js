@@ -49,7 +49,7 @@ class Escalation extends React.Component {
             <div>
                 <div class="card-body">
                     <strong class="card-text">Escalation Status: <span class="text-uppercase">{this.state.escalationStatus}</span></strong>
-                    {this.state.escalationStatus === "active" ? <button onClick={this.updateEscalationStatus}>Mark Resolved</button> : null}
+                    {this.state.escalationStatus === "active" && this.props.userType === "oversightAgency" ? <button class="escalation-status-btn" onClick={this.updateEscalationStatus}>Mark Resolved</button> : null}
                 </div>
                 <div class="card-body">
                     <h4 class="card-title text-center">Actions Taken</h4>

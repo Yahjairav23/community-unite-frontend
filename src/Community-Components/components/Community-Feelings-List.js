@@ -5,19 +5,22 @@ import CommentForm from './Community-Comment-Form'
 
 
 const communityFeelingsList = (props) => {
-    
+    const descComments = props.communityComments.sort( ( a, b ) => { return Date.parse(b.date) - Date.parse(a.date) } )
     return (
         <div class="col px-md-5">
             {props.userType === "citizen" ? 
             <div class="form-group">
-                <h5 >Let Your Voice Be Heard</h5>
-                <CommentForm/>
+                <div class="dropdown-divider"></div>
+                    <div class='community-comment-form'>
+                        <h3 >Let Your Voice Be Heard</h3>
+                        <CommentForm/>
+                    </div>
+                <div class="dropdown-divider"></div>
             </div>
             :
             null}
-            {/* <div class="dropdown-divider"></div> */}
-            <h3>Community Comments</h3>
-            <div class="list-group">
+            {/* <h3>Community Comments</h3> */}
+            <div class="row justify-content-md-center" >
                 {props.communityComments.map(comment => (
                     <CommunityFeeling comment={comment} key={comment.id}/>
                 ))}

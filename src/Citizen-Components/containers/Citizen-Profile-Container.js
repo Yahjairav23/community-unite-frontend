@@ -8,8 +8,8 @@ import Report from '../../General-Components/Report-List-Item'
 
 
 class CitizenProfileContainer extends React.Component {
-
     render(){
+        const descReports = this.props.escalatedReports.sort( ( a, b ) => { return Date.parse(b.date) - Date.parse(a.date) } )
         
         return(
             <div class='container-fluid'>
@@ -21,11 +21,12 @@ class CitizenProfileContainer extends React.Component {
                                 <div class="list-group"><CitizenReportsContainer/> </div>
                             </div>
 
+
                             <div class='col-md-6'>
                                 <h1>Reports In Escalation</h1>
                                 <div class="d-flex justify-content-center flex-column">
                                     {this.props.escalatedReports.length > 0 ?
-                                    this.props.allReports.filter(report => report.citizen_id === this.props.currentUser.id && this.props.escalations.find(escalation => escalation.report_id === report.id))
+                                    descReports.filter(report => report.citizen_id === this.props.currentUser.id && this.props.escalations.find(escalation => escalation.report_id === report.id))
                                     .map(report => (
                                     <Report report={report} key={report.id}/>
                                     )

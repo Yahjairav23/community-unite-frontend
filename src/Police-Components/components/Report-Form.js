@@ -74,68 +74,28 @@ class ReportForm extends React.Component {
 
     render(){
         return(
-            <div>
-                <h1>Report</h1>
+            <div class="report-form-holder">
+                
                 {this.state.new_report ? <Redirect to={`/reports/${this.state.new_report.id}`}/> :
          this.state.civilian === null ?
-            <div class='view'>
-                <div class='container'>
+                <div class='report-form-container'>
+                    <h1 class="form-title">Encounter Report</h1>
                     <form onSubmit={(e) => {this.findCivilian(e, this.state)}}>
-                    <div class="row100">
-                        <div class="col">
-                            <div class='inputBox'>
-                                {/* <TextField
-                                    onChange={this.fieldChange}
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    // fullWidth
-                                    name="citizenId"
-                                    label="Citizen ID"
-                                    id="citizenId"
-                                    autoComplete="citizenId"
-                                /> */}
-                                {/* <label for='citizenId'>Citizen ID</label> */}
-                                <input type='text' name='citizenId' required='required' onChange={this.fieldChange}/>
-                                <span class='text'>Citizen ID</span>
-                                <span class='line'></span>
+
+                            <div class="form-group">
+                                <input class='form-control' type='text' id='citizenId' name='citizenId' required='required' placeholder="Citizen ID" onChange={this.fieldChange}/>
+                                <label class='form-label' for='citizenId'>Citizen ID</label>
                             </div>
-                        </div>
-                        <div class='inputBox'>
-                            <div class="col">
-                                {/* <TextField
-                                    onChange={this.fieldChange}
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    // fullWidth
-                                    name="citizenIdValidate"
-                                    label="Verify Citizen ID"
-                                    id="citizenIdValidate"
-                                    autoComplete="citizenIdValidate"
-                                /> */}
-                                {/* <label for='citizenIdValidate'>Validate Citizen ID</label> */}
-                                <input type='text' name='citizenIdValidate' onChange={this.fieldChange}/>
-                                <span class='text'>Validate Citizen ID</span>
-                                <span class='line'></span>
+
+                            <div class="form-group">
+                                <input class="form-control" type='text' id='citizenIdValidate'name='citizenIdValidate' placeholder='Validate Citizen ID' onChange={this.fieldChange}/>
+                                <span class='form-label' for='citizenIdValidate'>Validate Citizen ID</span>
                             </div>
-                        </div>
-                        <div class="row100">
-                            <div class='col'>
-                                <input type='submit' value='Submit'/>
-                            </div>
-                        </div>
-                    </div>
-                        {/* <Button
-                            type='submit'
-                            // fullWidth
-                            variant='contained'
-                            color='primary'
-                        >Submit</Button> */}
                         
+                                <input class='animated-btn' type='submit' value='Submit'/>
+        
                     </form>
                 </div>
-            </div>
             :
             <Container component="main" maxWidth='lg'>
                 

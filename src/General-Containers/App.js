@@ -48,9 +48,10 @@ class App extends React.Component {
           <Route exact path='/' component={HomePage}/>
           <Route exact path='/community-reports' component={CommunityReports} />
           <Route exact path='/community-feelings' component={CommunityFeelings} />
-          <Route exact path='/login' render={() => (
-            userType === null ? <LoginContainer/> : <Redirect to={`/${userType}/profile`}/>
-          )
+          <Route exact path='/login' render={(routerProps) => {
+            // const user=routerProps.match.params.user
+            return userType === null ? <LoginContainer /> : <Redirect to={`/${userType}/profile`}/>
+          }
           }/>
           <Route exact path='/reports/:id' render={(routerProps) =>{ 
             const id = routerProps.match.params.id 

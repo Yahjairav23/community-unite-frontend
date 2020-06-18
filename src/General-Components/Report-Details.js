@@ -74,12 +74,12 @@ class ReportDetails extends React.Component {
     render(){
         return(
             this.state.report ?
-            <div>
+            <div class='container report-container'>
 
                 {this.props.userType !== "citizen" ? null :
                 this.state.escalation ? null :
                 <div>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <button class='animated-btn' type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Escalate
                     </button>
                     <div class="collapse" id="collapseExample">
@@ -95,19 +95,20 @@ class ReportDetails extends React.Component {
                         </div>
                     </div>
                 </div>}
-
+            <div class='details-header'>
                 <h1 class="display-4">Report | {this.state.report.id}</h1>
+            </div>
+
                 <div class="row">
                 <div class="col-md-3 col-md-pull-9">
 
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Encounter Location</h5>
-                            <p class="card-text">{this.state.report.location}<br/>{this.state.report.city}, {this.state.report.state}</p>
+                    {/* <div class="card"> */}
+                        <div class="encounter-card">
+                            <h5>Encounter Location</h5>
+                            <p>{this.state.report.location}<br/>{this.state.report.city}, {this.state.report.state}</p>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
+                    {/* </div> */}
+                        <div class="encounter-card">
                             <h5 class="card-title">Citizen Involved</h5>
                                 {this.state.citizen.name ?
                                     <p class="card-text">{this.state.citizen.name}</p>
@@ -128,70 +129,54 @@ class ReportDetails extends React.Component {
                                         <p class="card-text">Citizen Information Not Available</p>
                                 }
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="encounter-card">
                             <h5 class="card-title">Officer Involved</h5>
                             <p class="card-text">{this.state.police.name}</p>
                             <p class="card-text">Badge Number: {this.state.police.badge_number}</p>
                         </div>
-                    </div>
 
-                    <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Date Of Encounter</h5>
-                            <p class="card-text">{new Date(this.state.report.date).toDateString()}</p>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Time Of Encounter</h5>
-                            <p class="card-text">{new Date(this.state.report.time).toLocaleTimeString()}</p>
-                        </div>
-                    </div>
-                </div>
+                   
                     
                 </div>
                 <div class="col-md-9 col-md-push-3">
 
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="encounter-card">
                             <h5 class="card-title">Reason For Encounter</h5>
                             <p class="card-text">{this.state.report.reason}</p>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="encounter-card">
                             <h5 class="card-title">Description Of Encounter</h5>
                             <p class="card-text">{this.state.report.incident_description}</p>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="encounter-card">
                             <h5 class="card-title">Resolution</h5>
                             <p class="card-text">{this.state.report.resolution}</p>
                         </div>
-                    </div>
 
-                <div class="row">
-                    <div class="card">
-                        <div class="card-body">
+                <div class="row small-encounter-row">
+                        <div class="encounter-card">
                             <h5 class="card-title">Arrest Made?</h5>
                             <p class="card-text">{this.state.report.arrest ? "Yes" : "No"}</p>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="encounter-card">
                             <h5 class="card-title">Was Force Used?</h5>
                             <p class="card-text">{this.state.report.force_used ? "Yes" : "No"}</p>
                         </div>
-                    </div>
+
+                        <div class="encounter-card">
+                            <h5 class="card-title">Date Of Encounter</h5>
+                            <p class="card-text">{new Date(this.state.report.date).toDateString()}</p>
+                        </div>
+
+                        <div class="encounter-card">
+                            <h5 class="card-title">Time Of Encounter</h5>
+                            <p class="card-text">{new Date(this.state.report.time).toLocaleTimeString()}</p>
+                        </div>
+
                 </div>
 
                 </div>
@@ -202,20 +187,29 @@ class ReportDetails extends React.Component {
                     <dd class="col-sm-3">{this.state.report.city}</dd>
                 </dl> */}
 
-                {this.state.escalation ? <div class="card">
-                    <Escalation escalation={this.state.escalation}/>
-                </div> : null}
+                <div class="row">
 
-                <div class='card'>
-                    <h2>Comments From {this.state.citizen.name}</h2>
-                    {this.props.userType === 'citizen' && this.props.currentUser.id === this.state.citizen.id ? <ReportCommentForm updateComment={this.updateComments}/> : null}
-                
-                
-                    {this.state.comments.length>0 ? this.state.comments.map(comment => <ReportComment comment={comment}/>) : <div>No Comments At This Time.</div>}
+                    <div class='col-md-6'>
+                        {this.state.escalation ? <div class="encounter-card">
+                            <Escalation escalation={this.state.escalation}/>
+                        </div> : null}
+                    </div>
+
+                    <div class='col-md-6'>
+                        <div class="encounter-card">
+                            <h2>Comments From {this.state.citizen.name}</h2>
+                            {this.props.userType === 'citizen' && this.props.currentUser.id === this.state.citizen.id ? <ReportCommentForm updateComment={this.updateComments}/> : null}
+                        
+                        
+                            {this.state.comments.length>0 ? <div class='report-comments'>{this.state.comments.map(comment => <ReportComment comment={comment} />)}</div> : <div>No Comments At This Time.</div>}
+                        </div>
+                    </div>
                 </div>
+
             </div>
             :
             <div>Information Not Available At This Time</div>
+
         )
     }
 }
