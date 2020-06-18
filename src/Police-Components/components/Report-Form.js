@@ -14,7 +14,9 @@ class ReportForm extends React.Component {
         super()
         this.state = {
             citizenId: null,
-            civilian: null
+            civilian: null,
+            forceUsed: false,
+            arrestMade: false
         }
         // this.findCivilian = this.findCivilian.bind(this)
     }
@@ -31,15 +33,25 @@ class ReportForm extends React.Component {
                 body: JSON.stringify({citizenId: this.state.citizenId})
             })
             .then(resp => resp.json())
-            .then(data => this.setState({civilian: data}))
+            .then(data => {
+                this.setState({civilian: data})
+            })
         }else{
             alert("Please verify that you have properly verified citizen ID#.")
         }
     }
 
     fieldChange = (event) => {
+
         this.setState({
             [event.target.name]: event.target.value 
+        })
+    }
+
+    checkBoxFieldChange = (event) => {
+        
+        this.setState({
+            [event.target.name]: event.target.checked
         })
     }
 
@@ -81,314 +93,292 @@ class ReportForm extends React.Component {
                 <div class='report-form-container'>
                     <h1 class="form-title">Encounter Report</h1>
                     <form onSubmit={(e) => {this.findCivilian(e, this.state)}}>
-
-                            <div class="form-group">
-                                <input class='form-control' type='text' id='citizenId' name='citizenId' required='required' placeholder="Citizen ID" onChange={this.fieldChange}/>
-                                <label class='form-label' for='citizenId'>Citizen ID</label>
+                        <div class='fields'>
+                            <div class='input-fields'>
+                                <input type='text' id='citizenId' name='citizenId' required='required' placeholder="Citizen ID" onChange={this.fieldChange}/>
                             </div>
 
-                            <div class="form-group">
-                                <input class="form-control" type='text' id='citizenIdValidate'name='citizenIdValidate' placeholder='Validate Citizen ID' onChange={this.fieldChange}/>
-                                <span class='form-label' for='citizenIdValidate'>Validate Citizen ID</span>
+                            <div class='input-fields'>
+                                <input type='text' id='citizenIdValidate'name='citizenIdValidate' placeholder='Validate Citizen ID' onChange={this.fieldChange}/>
                             </div>
-                        
-                                <input class='animated-btn' type='submit' value='Submit'/>
+                        </div>
+                                <input class='btn animated-btn' type='submit' value='Submit'/>
         
                     </form>
                 </div>
             :
-            <Container component="main" maxWidth='lg'>
+            <div class='lg-report-form-container'>
                 
                 <form onSubmit={this.handleSubmit}>
-                  <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        id="encounterAddress"
-                        label="Address"
-                        name="encounterAddress"
-                        autoComplete="encounterAddress"
-                        // autoFocus
-                    />
-                <br/>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        // required
-                        // fullWidth
-                        name="encounterAddress2"
-                        label="Address"
-                        id="encounterAddress2"
-                        autoComplete="encounterAddress2"
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="city"
-                        label="City"
-                        id="city"
-                        autoComplete="city"
-                    />
-                <br/>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="state"
-                        label="State"
-                        id="state"
-                        autoComplete="state"
-                    />
-                <br/>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="zipCode"
-                        label="Zip Code"
-                        id="zipCode"
-                        autoComplete="zipCode"
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="currentTime"
-                        type="time"
-                        id="currentTime"
-                        autoComplete="currentTime"
-                    />
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="date"
-                        type="date"
-                        id="date"
-                        autoComplete="date"
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="forceUsed"
-                        label="Force Used?"
-                        id="forceUsed"
-                        autoComplete="forceUsed"
-                    />
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="arrestMade"
-                        label="Arrest Made?"
-                        id="arrestMade"
-                        autoComplete="arrestMade"
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        // onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="citizenId"
-                        label="Citizen ID"
-                        id="citizenId"
-                        autoComplete="citizenId"
-                        value={this.state.civilian.state_id}
-                    />
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        // fullWidth
-                        name="citizenName"
-                        label="Citizen Name"
-                        id="citizenName"
-                        autoComplete="citizenName"
-                        value={this.state.civilian.name}
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        // required
-                        // fullWidth
-                        type="tel"
-                        name="citizenPhoneNumber"
-                        label="Citizen Phone Number"
-                        id="citizenPhoneNumber"
-                        autoComplete="citizenPhoneNumber"
-                        value={this.state.civilian.phone_number}
-                    />
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        // required
-                        // fullWidth
-                        // type="e  mail"
-                        name="citizenEmail"
-                        label="Citizen Email"
-                        id="citizenEmail"
-                        autoComplete="citizenEmail"
-                        value={this.state.civilian.email}
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        // required
-                        // fullWidth
-                        name="citizenAddress"
-                        label="Citizen Address"
-                        id="citizenAddress"
-                        autoComplete="citizenAddress"
-                        value={this.state.civilian.address}
-                    />
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        // fullWidth
-                        name="citizenAddress2"
-                        label="Citizen Address"
-                        id="citizenAddress2"
-                        autoComplete="citizenAddress2"
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        // required
-                        // fullWidth
-                        name="citizenCity"
-                        label="City"
-                        id="citizenCity"
-                        autoComplete="citizenCity"
-                        value={this.state.civilian.city}
-                    />
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        // required
-                        // fullWidth
-                        name="citizenState"
-                        label="State"
-                        id="citizenState"
-                        autoComplete="citizenState"
-                        value={this.state.civilian.state}
-                    />
-                    <TextField
-                        // onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        // required
-                        // fullWidth
-                        name="citizenZipCode"
-                        label="Zip Code"
-                        id="citizenZipCode"
-                        autoComplete="citizenZipCode"
-                        value={this.state.civilian.zip_code}
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        multiline
-                        rows={10}
-                        fullWidth
-                        name="reason"
-                        label="What is your reasoning for this civilian encounter?"
-                        id="reason"
-                        autoComplete="reason"
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        multiline
-                        rows={10}
-                        fullWidth
-                        name="description"
-                        label="Incident Description"
-                        id="description"
-                        autoComplete="description"
-                    />
-                </Container>
-                <Container>
-                    <TextField
-                        onChange={this.fieldChange}
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        multiline
-                        rows={10}
-                        fullWidth
-                        name="resolution"
-                        label="What was the resolution?"
-                        id="resolution"
-                        autoComplete="resolution"
-                    />
-                </Container>
-                <Container>
-                    <Button
+
+                    <div class="row">
+                            <div class="col">
+                            <div class='sm-report-form-container '>
+                            <h1 class="sm-form-title">Encounter Location</h1>
+                            <div class='fields'>
+                                <div class='input-fields'>
+                                    <input
+                                        onChange={this.fieldChange}
+                                        required
+                                        id="encounterAddress"
+                                        placeholder="Address"
+                                        name="encounterAddress"
+                                    />
+                                </div>
+                            <br/>
+                                <div class='input-fields'>
+                                    <input
+                                        onChange={this.fieldChange}
+                                        name="encounterAddress2"
+                                        placeholder="Address"
+                                        id="encounterAddress2"
+                                    />
+                                </div> 
+                                <div class='input-fields'>            
+                                    <input
+                                        onChange={this.fieldChange}
+                                        name="city"
+                                        placeholder="City"
+                                        id="city"
+                                    />
+                                </div> 
+                            <br/>
+                                <div class='input-fields'>
+                                    <input
+                                        onChange={this.fieldChange}
+                                        name="state"
+                                        placeholder="State"
+                                        id="state"
+                                    />
+                                </div>
+                            <br/>
+                                <div class='input-fields'>
+                                    <input
+                                        onChange={this.fieldChange}
+                                        name="zipCode"
+                                        placeholder="Zip Code"
+                                        id="zipCode"
+                                    />
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+
+                    <div class="col">
+                    <div class='sm-report-form-container'>
+                    <h1 class="sm-form-title">Citizen Information</h1>
+                        <div class='fields'>
+                        <div class='input-fields'>
+                            <input
+                                required
+                                name="citizenId"
+                                placeholder="Citizen ID"
+                                id="citizenId"
+                                value={this.state.civilian.state_id}
+                            />
+                        </div>
+                        <div class='input-fields'>
+                            <input
+                                onChange={this.fieldChange}
+                                required
+                                name="citizenName"
+                                placeholder="Citizen Name"
+                                id="citizenName"
+                                value={this.state.civilian.name}
+                            />
+                        </div>
+                        <div class='input-fields'>
+                            <input
+                                onChange={this.fieldChange}
+                                type="tel"
+                                name="citizenPhoneNumber"
+                                placeholder="Citizen Phone Number"
+                                id="citizenPhoneNumber"
+                                value={this.state.civilian.phone_number}
+                            />
+                        </div>
+                        <div class='input-fields'>
+                            <input
+                                onChange={this.fieldChange}
+                                name="citizenEmail"
+                                placeholder="Citizen Email"
+                                id="citizenEmail"
+                                value={this.state.civilian.email}
+                            />
+                        </div>
+                        <div class='input-fields'>
+                            <input
+                                onChange={this.fieldChange}
+                                name="citizenAddress"
+                                placeholder="Citizen Address"
+                                id="citizenAddress"
+                                value={this.state.civilian.address}
+                            />
+                        </div>
+                        <div class='input-fields'>
+                            <input
+                                onChange={this.fieldChange}
+                                name="citizenAddress2"
+                                placeholder="Citizen Address"
+                                id="citizenAddress2"
+                            />
+                        </div>
+                        <div class='input-fields'>
+                            <input
+                                onChange={this.fieldChange}
+                                name="citizenCity"
+                                placeholder="City"
+                                id="citizenCity"
+                                value={this.state.civilian.city}
+                            />
+                        </div>
+                        <div class='input-fields'>
+                            <input
+                                onChange={this.fieldChange}
+                                name="citizenState"
+                                placeholder="State"
+                                id="citizenState"
+                                value={this.state.civilian.state}
+                            />
+                        </div>
+                        <div class='input-fields'>
+                            <input
+                                name="citizenZipCode"
+                                placeholder="Zip Code"
+                                id="citizenZipCode"
+                                value={this.state.civilian.zip_code}
+                            />
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="form-title">Encounter Details</h1>
+                <div class="row">
+                    <div class='wide-sm-report-form-container'>
+                        <div class='fields'>
+                            <div class='row'>
+                                <div class='col-md-6'>
+                                    <div class='input-fields'>
+                                        <input
+                                            onChange={this.fieldChange}
+                                            required
+                                            name="currentTime"
+                                            type="time"
+                                            id="currentTime"
+                                        />
+                                    </div>
+                                </div>
+                                <div class='col-md-6'>
+                                    <div class='input-fields'>
+                                        <input
+                                            onChange={this.fieldChange}
+                                            required
+                                            name="date"
+                                            type="date"
+                                            id="date"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-md-6'>
+                                    <div class='row'>
+                                        <h4 class='form-label-report' style={{'margin-right': '30px'}}>Was Force Used?</h4>
+                                        <input
+                                            type='checkbox'
+                                            onChange={this.checkBoxFieldChange}
+                                            name="forceUsed"
+                                            placeholder="Force Used?"
+                                            id="forceUsed"
+                                        />
+                                    </div>
+                                </div>
+                                <div class='col-md-6'>
+                                    <div class='row'>
+                                        <h4 class='form-label-report' style={{'margin-right': '30px'}}>Was An Arrest Made?</h4>
+                                        <input
+                                            type='checkbox'
+                                            onChange={this.checkBoxFieldChange}
+                                            name="arrestMade"
+                                            placeholder="Arrest Made?"
+                                            id="arrestMade"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='wide-sm-report-form-container'>
+                <h1 class="sm-form-title">Reason</h1>
+                    <div class='fields'>
+                        <div class='input-fields'>
+                            <textarea
+                                onChange={this.fieldChange}
+                                required
+                                multiline
+                                rows={10}
+                                fullWidth
+                                name="reason"
+                                placeholder="What is your reasoning for this civilian encounter?"
+                                id="reason"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class='wide-sm-report-form-container'>
+                <h1 class="sm-form-title">Descriptions</h1>
+                <div class='fields'>
+                        <div class='input-fields'>
+                            <textarea
+                                onChange={this.fieldChange}
+                                required
+                                multiline
+                                rows={10}
+                                fullWidth
+                                name="description"
+                                placeholder="Incident Description"
+                                id="description"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class='wide-sm-report-form-container'>
+                <h1 class="sm-form-title">Resolution</h1>
+                <div class='fields'>
+                        <div class='input-fields'>
+                            <textarea
+                                onChange={this.fieldChange}
+                                required
+                                multiline
+                                rows={10}
+                                fullWidth
+                                name="resolution"
+                                placeholder="What was the resolution?"
+                                id="resolution"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <input
+                        class='btn animated-btn'
                         type='submit'
-                        // fullWidth
-                        variant='contained'
-                        color='primary'
-                    >Submit</Button>
-                    <Button
+                        value='Submit'
+                    />
+
+                    <input
+                        class='btn animated-btn'
                         type='reset'
-                        // fullWidth
-                        variant='contained'
-                        color='primary'
-                    >Reset Form</Button>
-                </Container>
+                        value="Reset Form"
+                    />
+                </div>
     
                 </form>
-            </Container>
+            </div>
         
     }
     </div>

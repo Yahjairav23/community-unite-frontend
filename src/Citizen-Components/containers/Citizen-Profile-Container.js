@@ -23,7 +23,7 @@ class CitizenProfileContainer extends React.Component {
 
 
                             <div class='col-md-6'>
-                                <h1>Reports In Escalation</h1>
+                                <h1 class="sm-form-title">Reports In Escalation</h1>
                                 <div class="d-flex justify-content-center flex-column">
                                     {this.props.escalatedReports.length > 0 ?
                                     descReports.filter(report => report.citizen_id === this.props.currentUser.id && this.props.escalations.find(escalation => escalation.report_id === report.id))
@@ -37,7 +37,7 @@ class CitizenProfileContainer extends React.Component {
                             </div>
                         </div>
                     
-                        <div class="dropdown-divider"></div>
+                        <div class="divider"></div>
 
                         <div>Comment Submit</div>
                         <CommentForm />

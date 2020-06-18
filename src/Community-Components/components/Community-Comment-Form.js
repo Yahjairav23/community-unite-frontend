@@ -36,10 +36,14 @@ class commentForm extends React.Component {
     render(){
         return(
             <div>
+                
                 <form onSubmit={(e) => this.submitForm(e)}>
-                    <textarea onChange={this.changeField} class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="How do you think your Police Department is performing?"></textarea>
-                    {/* <input type="text" placeholder="How do you think your Police Department is performing?" onChange={this.changeField} /> */}
-                    <input type='submit' value='Submit' />
+                    {/* <div class='fields' style={{'margin-top': "0"}}> */}
+                        <div class='input-fields textbox-border' style={{'margin-top': '0'}}>
+                            <textarea onChange={this.changeField} id="exampleFormControlTextarea1" rows="3" placeholder="How do you think your Police Department is performing?"></textarea>
+                        </div>
+                    {/* </div> */}
+                    <input class='signin-button' type='submit' value='Submit' />
                 </form>
             </div>
         )

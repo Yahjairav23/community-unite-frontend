@@ -15,9 +15,10 @@ class home extends React.Component {
                         {/* <div class="row no-gutters rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-right"> */}
                             <h1 class='title'>YOU<span>NITE</span></h1>
                             <p class='content'>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                Where your vioce is heard and your complaints are taken serious!<br/>
+                                Together we can regulate the system.
                             </p>
-                            <a href='#' class='btn animated-btn'>Fancy Button</a>
+                            <a href='#' class='btn animated-btn'>Learn More</a>
                         {/* </div> */}
                     </div>
                     <div class='right-col'>

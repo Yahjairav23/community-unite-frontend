@@ -192,7 +192,9 @@ class ReportDetails extends React.Component {
                     <div class='col-md-6'>
                         {this.state.escalation ? <div class="encounter-card">
                             <Escalation escalation={this.state.escalation}/>
-                        </div> : null}
+                        </div> : <div class="encounter-card">
+                                <h4>This report has not been escalated at this time.</h4>
+                            </div>}
                     </div>
 
                     <div class='col-md-6'>
