@@ -18,7 +18,7 @@ Although it may not be the solution, it was created with hopes of getting closer
   - The third party agency has the ability to update the status on any escalated reports, as well as create new actions they have taken towards resolving the escalation.
 
 
-###### How To Use:
+## How To Use:
 
 *Please be aware, the backend to this project is in a seperate repository and can be found at the following link:*
 [Younite Backend](https://github.com/Yahjairav23/community-unite-backend)
