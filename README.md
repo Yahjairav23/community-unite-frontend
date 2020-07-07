@@ -1,6 +1,6 @@
 ## YOUNite
 
-![alt text](https://imgur.com/BZhB8Ag "Younite Logo")
+![Younite Logo](/logo.svg)
 
 Younite is an application that was created to help combat the ongoing issue of police brutality.
 
