@@ -1,5 +1,7 @@
 ## YOUNite
 
+![alt text](https://imgur.com/BZhB8Ag "Younite Logo")
+
 Younite is an application that was created to help combat the ongoing issue of police brutality.
 
 Younite works towards creating more transparency in the system and discouraging officers from having unnecessary encounters with citizens, all the while allowing citizen's voices to be heard.
