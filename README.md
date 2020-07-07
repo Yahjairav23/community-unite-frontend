@@ -1,6 +1,6 @@
 ## YOUNite
 
-![Younite Logo](/src/logo.svg)
+![Younite Logo](/src/images/YOUnite-still.png)
 
 Younite is an application that was created to help combat the ongoing issue of police brutality.
 
