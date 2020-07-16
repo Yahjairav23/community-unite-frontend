@@ -3,11 +3,6 @@ import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {addingToReportArr} from '../../redux/actions'
 
-
-//Material-ui Styling imports
-import {Container, Typography, TextField, Button} from '@material-ui/core'
-
-
 class ReportForm extends React.Component {
 
     constructor(){
@@ -18,12 +13,10 @@ class ReportForm extends React.Component {
             forceUsed: false,
             arrestMade: false
         }
-        // this.findCivilian = this.findCivilian.bind(this)
     }
 
     findCivilian = (e, stateInfo) => {
         e.preventDefault()
-        // debugger
         if(this.state.citizenId === this.state.citizenIdValidate){
             fetch('http://localhost:3000/api/v1/search', {
                 method: 'POST',
@@ -68,7 +61,6 @@ class ReportForm extends React.Component {
             citizen_id: citizen_id,
             reportDetails: reportDetails
         }
-        // debugger
         fetch('http://localhost:3000/reports', {
             method: 'POST',
             headers: {
@@ -78,7 +70,6 @@ class ReportForm extends React.Component {
         })
         .then(resp => resp.json())
         .then(data => {
-            // debugger
             this.setState({new_report: data})
             this.props.addReportToArr(data)
         })
@@ -86,37 +77,39 @@ class ReportForm extends React.Component {
 
     render(){
         return(
-            <div class="report-form-holder">
+            <div className="report-form-holder">
                 
-                {this.state.new_report ? <Redirect to={`/reports/${this.state.new_report.id}`}/> :
-         this.state.civilian === null ?
-                <div class='report-form-container'>
-                    <h1 class="form-title">Encounter Report</h1>
+            {this.state.new_report ? 
+            <Redirect to={`/reports/${this.state.new_report.id}`}/> 
+            :
+            this.state.civilian === null ?
+                <div className='report-form-container'>
+                    <h1 className="form-title">Encounter Report</h1>
                     <form onSubmit={(e) => {this.findCivilian(e, this.state)}}>
-                        <div class='fields'>
-                            <div class='input-fields'>
+                        <div className='fields'>
+                            <div className='input-fields'>
                                 <input type='text' id='citizenId' name='citizenId' required='required' placeholder="Citizen ID" onChange={this.fieldChange}/>
                             </div>
 
-                            <div class='input-fields'>
+                            <div className='input-fields'>
                                 <input type='text' id='citizenIdValidate'name='citizenIdValidate' placeholder='Validate Citizen ID' onChange={this.fieldChange}/>
                             </div>
                         </div>
-                                <input class='btn animated-btn' type='submit' value='Submit'/>
+                                <input className='btn animated-btn' type='submit' value='Submit'/>
         
                     </form>
                 </div>
             :
-            <div class='lg-report-form-container'>
+            <div className='lg-report-form-container'>
                 
                 <form onSubmit={this.handleSubmit}>
 
-                    <div class="row">
-                            <div class="col">
-                            <div class='sm-report-form-container '>
-                            <h1 class="sm-form-title">Encounter Location</h1>
-                            <div class='fields'>
-                                <div class='input-fields'>
+                    <div className="row">
+                            <div className="col">
+                            <div className='sm-report-form-container '>
+                            <h1 className="sm-form-title">Encounter Location</h1>
+                            <div className='fields'>
+                                <div className='input-fields'>
                                     <input
                                         onChange={this.fieldChange}
                                         required
@@ -126,7 +119,7 @@ class ReportForm extends React.Component {
                                     />
                                 </div>
                             <br/>
-                                <div class='input-fields'>
+                                <div className='input-fields'>
                                     <input
                                         onChange={this.fieldChange}
                                         name="encounterAddress2"
@@ -134,7 +127,7 @@ class ReportForm extends React.Component {
                                         id="encounterAddress2"
                                     />
                                 </div> 
-                                <div class='input-fields'>            
+                                <div className='input-fields'>            
                                     <input
                                         onChange={this.fieldChange}
                                         name="city"
@@ -143,7 +136,7 @@ class ReportForm extends React.Component {
                                     />
                                 </div> 
                             <br/>
-                                <div class='input-fields'>
+                                <div className='input-fields'>
                                     <input
                                         onChange={this.fieldChange}
                                         name="state"
@@ -152,7 +145,7 @@ class ReportForm extends React.Component {
                                     />
                                 </div>
                             <br/>
-                                <div class='input-fields'>
+                                <div className='input-fields'>
                                     <input
                                         onChange={this.fieldChange}
                                         name="zipCode"
@@ -164,11 +157,11 @@ class ReportForm extends React.Component {
                     </div>
                     </div>
 
-                    <div class="col">
-                    <div class='sm-report-form-container'>
-                    <h1 class="sm-form-title">Citizen Information</h1>
-                        <div class='fields'>
-                        <div class='input-fields'>
+                    <div className="col">
+                    <div className='sm-report-form-container'>
+                    <h1 className="sm-form-title">Citizen Information</h1>
+                        <div className='fields'>
+                        <div className='input-fields'>
                             <input
                                 required
                                 name="citizenId"
@@ -177,7 +170,7 @@ class ReportForm extends React.Component {
                                 value={this.state.civilian.state_id}
                             />
                         </div>
-                        <div class='input-fields'>
+                        <div className='input-fields'>
                             <input
                                 onChange={this.fieldChange}
                                 required
@@ -187,7 +180,7 @@ class ReportForm extends React.Component {
                                 value={this.state.civilian.name}
                             />
                         </div>
-                        <div class='input-fields'>
+                        <div className='input-fields'>
                             <input
                                 onChange={this.fieldChange}
                                 type="tel"
@@ -197,7 +190,7 @@ class ReportForm extends React.Component {
                                 value={this.state.civilian.phone_number}
                             />
                         </div>
-                        <div class='input-fields'>
+                        <div className='input-fields'>
                             <input
                                 onChange={this.fieldChange}
                                 name="citizenEmail"
@@ -206,7 +199,7 @@ class ReportForm extends React.Component {
                                 value={this.state.civilian.email}
                             />
                         </div>
-                        <div class='input-fields'>
+                        <div className='input-fields'>
                             <input
                                 onChange={this.fieldChange}
                                 name="citizenAddress"
@@ -215,7 +208,7 @@ class ReportForm extends React.Component {
                                 value={this.state.civilian.address}
                             />
                         </div>
-                        <div class='input-fields'>
+                        <div className='input-fields'>
                             <input
                                 onChange={this.fieldChange}
                                 name="citizenAddress2"
@@ -223,7 +216,7 @@ class ReportForm extends React.Component {
                                 id="citizenAddress2"
                             />
                         </div>
-                        <div class='input-fields'>
+                        <div className='input-fields'>
                             <input
                                 onChange={this.fieldChange}
                                 name="citizenCity"
@@ -232,7 +225,7 @@ class ReportForm extends React.Component {
                                 value={this.state.civilian.city}
                             />
                         </div>
-                        <div class='input-fields'>
+                        <div className='input-fields'>
                             <input
                                 onChange={this.fieldChange}
                                 name="citizenState"
@@ -241,7 +234,7 @@ class ReportForm extends React.Component {
                                 value={this.state.civilian.state}
                             />
                         </div>
-                        <div class='input-fields'>
+                        <div className='input-fields'>
                             <input
                                 name="citizenZipCode"
                                 placeholder="Zip Code"
@@ -254,13 +247,13 @@ class ReportForm extends React.Component {
                     </div>
                 </div>
 
-                <h1 class="form-title">Encounter Details</h1>
-                <div class="row">
-                    <div class='wide-sm-report-form-container'>
-                        <div class='fields'>
-                            <div class='row'>
-                                <div class='col-md-6'>
-                                    <div class='input-fields'>
+                <h1 className="form-title">Encounter Details</h1>
+                <div className="row">
+                    <div className='wide-sm-report-form-container'>
+                        <div className='fields'>
+                            <div className='row'>
+                                <div className='col-md-6'>
+                                    <div className='input-fields'>
                                         <input
                                             onChange={this.fieldChange}
                                             required
@@ -270,8 +263,8 @@ class ReportForm extends React.Component {
                                         />
                                     </div>
                                 </div>
-                                <div class='col-md-6'>
-                                    <div class='input-fields'>
+                                <div className='col-md-6'>
+                                    <div className='input-fields'>
                                         <input
                                             onChange={this.fieldChange}
                                             required
@@ -282,10 +275,10 @@ class ReportForm extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div class='row'>
-                                <div class='col-md-6'>
-                                    <div class='row'>
-                                        <h4 class='form-label-report' style={{'margin-right': '30px'}}>Was Force Used?</h4>
+                            <div className='row'>
+                                <div className='col-md-6'>
+                                    <div className='row'>
+                                        <h4 className='form-label-report' style={{'margin-right': '30px'}}>Was Force Used?</h4>
                                         <input
                                             type='checkbox'
                                             onChange={this.checkBoxFieldChange}
@@ -295,9 +288,9 @@ class ReportForm extends React.Component {
                                         />
                                     </div>
                                 </div>
-                                <div class='col-md-6'>
-                                    <div class='row'>
-                                        <h4 class='form-label-report' style={{'margin-right': '30px'}}>Was An Arrest Made?</h4>
+                                <div className='col-md-6'>
+                                    <div className='row'>
+                                        <h4 className='form-label-report' style={{'margin-right': '30px'}}>Was An Arrest Made?</h4>
                                         <input
                                             type='checkbox'
                                             onChange={this.checkBoxFieldChange}
@@ -312,10 +305,10 @@ class ReportForm extends React.Component {
                     </div>
                 </div>
 
-                <div class='wide-sm-report-form-container'>
-                <h1 class="sm-form-title">Reason</h1>
-                    <div class='fields'>
-                        <div class='input-fields'>
+                <div className='wide-sm-report-form-container'>
+                <h1 className="sm-form-title">Reason</h1>
+                    <div className='fields'>
+                        <div className='input-fields'>
                             <textarea
                                 onChange={this.fieldChange}
                                 required
@@ -329,10 +322,10 @@ class ReportForm extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class='wide-sm-report-form-container'>
-                <h1 class="sm-form-title">Descriptions</h1>
-                <div class='fields'>
-                        <div class='input-fields'>
+                <div className='wide-sm-report-form-container'>
+                <h1 className="sm-form-title">Descriptions</h1>
+                <div className='fields'>
+                        <div className='input-fields'>
                             <textarea
                                 onChange={this.fieldChange}
                                 required
@@ -346,10 +339,10 @@ class ReportForm extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class='wide-sm-report-form-container'>
-                <h1 class="sm-form-title">Resolution</h1>
-                <div class='fields'>
-                        <div class='input-fields'>
+                <div className='wide-sm-report-form-container'>
+                <h1 className="sm-form-title">Resolution</h1>
+                <div className='fields'>
+                        <div className='input-fields'>
                             <textarea
                                 onChange={this.fieldChange}
                                 required
@@ -363,15 +356,15 @@ class ReportForm extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class='row'>
+                <div className='row'>
                     <input
-                        class='btn animated-btn'
+                        className='btn animated-btn'
                         type='submit'
                         value='Submit'
                     />
 
                     <input
-                        class='btn animated-btn'
+                        className='btn animated-btn'
                         type='reset'
                         value="Reset Form"
                     />

@@ -47,25 +47,25 @@ class Escalation extends React.Component {
     render(){
         return(
             <div>
-                <div class="card-body">
-                    <strong class="card-text">Escalation Status: <span class="text-uppercase">{this.state.escalationStatus}</span></strong>
-                    {this.state.escalationStatus === "active" && this.props.userType === "oversightAgency" ? <button class="escalation-status-btn" onClick={this.updateEscalationStatus}>Mark Resolved</button> : null}
+                <div className="card-body">
+                    <strong className="card-text">Escalation Status: <span className="text-uppercase">{this.state.escalationStatus}</span></strong>
+                    {this.state.escalationStatus === "active" && this.props.userType === "oversightAgency" ? <button className="escalation-status-btn" onClick={this.updateEscalationStatus}>Mark Resolved</button> : null}
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title text-center">Actions Taken</h4>
+                <div className="card-body">
+                    <h4 className="card-title text-center">Actions Taken</h4>
 
                     {this.state.actions.length > 0 ?
                         this.state.actions.map(action => {
                             return(
                                 <div>
-                                    <strong class="card-text">{new Date(action.date).toDateString()}</strong>
-                                    <blockquote><p class="card-text">{action.description}</p></blockquote>
-                                    <div class="dropdown-divider"></div>
+                                    <strong className="card-text">{new Date(action.date).toDateString()}</strong>
+                                    <blockquote><p className="card-text">{action.description}</p></blockquote>
+                                    <div className="dropdown-divider"></div>
                                 </div>
                             )
                         })
                     :
-                        <p class="card-text">No actions have been taken at this time. Please allow 3 - 5 business days for review.</p>
+                        <p className="card-text">No actions have been taken at this time. Please allow 3 - 5 business days for review.</p>
                     }
 
                     {this.props.userType === "oversightAgency" ?

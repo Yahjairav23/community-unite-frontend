@@ -22,15 +22,6 @@ class commentForm extends React.Component {
         this.props.creatingComment(commentObj)
         e.target.reset()
         alert('Thank you for your feedback!')
-
-        //I can add a local state property that can change on submit of comment and allow this allert to be displayed. 
-        //Better looking alert! Should place in render with a conditional.
-        // <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        // <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-        // <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        //     <span aria-hidden="true">&times;</span>
-        // </button>
-        // </div>
     }
 
     render(){
@@ -38,12 +29,10 @@ class commentForm extends React.Component {
             <div>
                 
                 <form onSubmit={(e) => this.submitForm(e)}>
-                    {/* <div class='fields' style={{'margin-top': "0"}}> */}
-                        <div class='input-fields textbox-border' style={{'margin-top': '0'}}>
+                        <div className='input-fields textbox-border' style={{'margin-top': '0'}}>
                             <textarea onChange={this.changeField} id="exampleFormControlTextarea1" rows="3" placeholder="How do you think your Police Department is performing?"></textarea>
                         </div>
-                    {/* </div> */}
-                    <input class='signin-button' type='submit' value='Submit' />
+                    <input className='signin-button' type='submit' value='Submit' />
                 </form>
             </div>
         )

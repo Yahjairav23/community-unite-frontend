@@ -4,42 +4,33 @@ import Report from '../../General-Components/Report-List-Item'
 
 class ReportsContainer extends React.Component{
 
-    constructor(){
-        super()
-        this.state={
-            sortedReports: [],
-            sortedEscalation: []
-        }
-    }
-  
-    componentDidMount =() => {
-        if(this.props.currentUser){
-            this.setState({sortedReports: this.props.currentUser.reports.sort( ( a, b ) => { return Date.parse(b.date) - Date.parse(a.date) } ) })
-        }
-        if(this.props.escalatedReports){
-            this.setState({sortedEscalations: this.props.escalatedReports.sort( ( a, b ) => { return Date.parse(b.date) - Date.parse(a.date) } ) })
-        }
-    }
-    
     render(){
-
+        const descEscalations= this.props.escalatedReports.sort( ( a, b ) => { return Date.parse(b.date) - Date.parse(a.date) } )
         return(
             <div>
                 {this.props.currentUser !== null ? 
-                <div class='row'>
+                <div className='row'>
 
-                    <div class='col-md-6'>
+                    <div className='col-md-6'>
                         <h1 >Your Reports</h1>
-                        <div class="d-flex justify-content-center flex-column">
-                            {this.state.sortedReports.map(report => <Report report={report} key={report.id}/>) }
+                        <div className="d-flex justify-content-center flex-column">
+                            {/* {this.props.currentUser.length > 0 ?
+                            descReports.map(report => <Report report={report} key={report.id}/>) 
+                            :
+                            null} */}
+                            {this.props.currentUser ? 
+                            this.props.currentUser.reports.sort( ( a, b ) => { return Date.parse(b.date) - Date.parse(a.date)}).map(report => <Report report={report} key={report.id}/>) 
+                            : 
+                            <p>Nothing here</p>}
+
                         </div>
                     </div>
 
-                    <div class='col-md-6'>
+                    <div className='col-md-6'>
                         <h1>Reports In Escalation</h1>
-                        <div class="d-flex justify-content-center flex-column">
+                        <div className="d-flex justify-content-center flex-column">
                             {this.props.escalatedReports.length > 0 ?
-                            this.state.sortedEscalation.filter(report => report.police_id === this.props.currentUser.id)
+                            descEscalations.filter(report => report.police_id === this.props.currentUser.id)
                             .map(escalation => <Report report={escalation} key={escalation.id}/>)
                             : 
                             null}

@@ -72,6 +72,10 @@ nav ul li a:hover {
   border-bottom: 3px solid #e5e5e5;
 }
 
+.user-input {
+  color: #071E22 !important;
+}
+
 .signin-option-button {
   margin-top: 0;
   padding-top: 0%;
@@ -195,7 +199,7 @@ nav ul li a:hover {
   background-size: 200% 100%;
   transition: 0.5s;
 
-  animation: fadeIn 1s linear 2.5s forwards;
+  animation: fadeIn .1s linear 1.5s forwards;
 }
 
 .btn:hover {

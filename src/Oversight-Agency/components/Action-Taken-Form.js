@@ -31,9 +31,9 @@ class ActionTakenForm extends React.Component {
                     this.props.updateActions(this.state)
                     e.target.reset()
                 }}>
-                    <div class="action-text-field"><textarea onChange={this.handleChange} required type='text' name="description" rows="5" placeholder='Please provide any available updates...'/><br/></div>
-                    <div class='action-date-field'><input onChange={this.handleChange} required type='date' name='date'/></div>
-                    <div class='action-date-submit'><input class="escalation-status-btn" type='submit' value='Submit'/></div>
+                    <div className="action-text-field"><textarea onChange={this.handleChange} required type='text' name="description" rows="5" placeholder='Please provide any available updates...'/><br/></div>
+                    <div className='action-date-field'><input onChange={this.handleChange} required type='date' name='date'/></div>
+                    <div className='action-date-submit'><input className="escalation-status-btn" type='submit' value='Submit'/></div>
                 </form>
             </div>
         )

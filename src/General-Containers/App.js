@@ -23,7 +23,6 @@ import AgencyProfileContainer from '../Oversight-Agency/containers/Agency-Profil
 class App extends React.Component {
 
   componentDidMount(){
-    // debugger
     this.props.fetchingAllReports();
     this.props.fetchingCommunityComments()
     this.props.fetchingAllPDs()
@@ -49,7 +48,6 @@ class App extends React.Component {
           <Route exact path='/community-reports' component={CommunityReports} />
           <Route exact path='/community-feelings' component={CommunityFeelings} />
           <Route exact path='/login' render={(routerProps) => {
-            // const user=routerProps.match.params.user
             return userType === null ? <LoginContainer /> : <Redirect to={`/${userType}/profile`}/>
           }
           }/>
@@ -63,7 +61,6 @@ class App extends React.Component {
         <Route exact path='/report-form' render={() => (
           userType === "police" ? <ReportForm/> : userType === "citizen" ? <Redirect to="/citizen/profile"/> : <Redirect to='/login'/>
         )} />
-      {/* Need to fix profile route to show the right page */}
         <Route exact path='/citizen/profile' render={() => (
           userType === "citizen" ? <CitizenProfileContainer /> : userType === "police" ? <Redirect to='/report-form'/> : <Redirect to='/agency/profile'/>
         )}/>

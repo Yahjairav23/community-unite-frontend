@@ -9,15 +9,15 @@ class AgencyProfileContainer extends React.Component {
     render(){
         return(
             <div>
-                <div class='row'>
+                <div className='row'>
 
-                    <div class='col-md-6'>
-                        <h1 class='mini-header'>All Reports</h1> 
+                    <div className='col-md-6'>
+                        <h1 className='mini-header'>All Reports</h1> 
                         {this.props.reports.map(report => <ReportsList report={report} key={report.id}/> )}
                     </div>
 
-                    <div class='col-md-6'>
-                        <h1 class='mini-header'>Reports In Escalation</h1>
+                    <div className='col-md-6'>
+                        <h1 className='mini-header'>Reports In Escalation</h1>
                         {this.props.escalatedReports.length > 0 ?
                         this.props.escalatedReports.map(escalation => <ReportsList report={escalation} key={escalation.id}/>)
                         : 

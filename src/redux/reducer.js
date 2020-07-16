@@ -1,13 +1,8 @@
 import { combineReducers } from "redux"
 
-// const initialState = {
-//     currentUser: null
-// }
-
 // this reducer handles any dispatch actions pertaining to userType
 const userTypeReducer = (oldState = null, action) => {
   let newState
-// debugger  
   switch(action.type){
     case "SET_USER_TYPE":
       newState = action.payload
@@ -20,7 +15,6 @@ const userTypeReducer = (oldState = null, action) => {
 // this reducer will take care of any dispatch actions pertaining to currentUser
 const currentUserReducer = (oldState = null, action) => {
     let newState
-    // let actions
     
     switch(action.type){
       case "LOG_IN_USER":
@@ -29,13 +23,6 @@ const currentUserReducer = (oldState = null, action) => {
       case "LOG_OUT_USER":
         newState = null
         return newState
-      // case "ACTION_CREATED":
-      //   // debugger
-      //   let escalation = oldState.escalations.find(el => el.id === action.payload.escalation_id)
-      //   escalation.action_takens.push(action.payload)
-      //   // escalations = [...oldState.escalations, escalation]
-      //   newState = oldState
-      //   return newState
       default:
         return oldState
     }  

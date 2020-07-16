@@ -2,9 +2,9 @@ import React from 'react'
 
 const ReportComment = (props) => {
     return(
-        <div class='report-comment'>
+        <div className='report-comment'>
             <strong>{props.comment}</strong>
-            <div class="dropdown-divider"></div>
+            <div className="dropdown-divider"></div>
         </div>
     )
 } 

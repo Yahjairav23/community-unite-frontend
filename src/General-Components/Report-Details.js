@@ -20,7 +20,6 @@ class ReportDetails extends React.Component {
         fetch(`http://localhost:3000/reports/${id}`)
         .then(resp => resp.json())
         .then(report => {
-            // const escalation = this.props.escalations.find(escalation => escalation.report_id === report.id)
             this.setState({report: report, citizen: report.citizen, police: report.police, escalation: report.escalation, comments: report.comments
         })
         })
@@ -74,136 +73,128 @@ class ReportDetails extends React.Component {
     render(){
         return(
             this.state.report ?
-            <div class='container report-container'>
+            <div className='container report-container'>
 
                 {this.props.userType !== "citizen" ? null :
                 this.state.escalation ? null :
                 <div>
-                    <button class='animated-btn' type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <button className='animated-btn btn' type="button" data-toggle="collapse" data-target="#collapseReason" aria-expanded="false" aria-controls="collapseExample">
                         Escalate
                     </button>
-                    <div class="collapse" id="collapseExample">
-                        <div class="well">
+                    <div className="collapse" id="collapseReason">
+                        <div className="well">
                             <form onSubmit={(e) => {
                                 e.preventDefault()
                                 this.handleSubmit()
                                 e.target.reset()
                             }}>
-                                <textarea class="form-control" onChange={this.fieldChange} type='text' name='reason' placeholder='Please provide a valid reason for your escalation request.'/>
+                                <textarea className="form-control" onChange={this.fieldChange} type='text' name='reason' placeholder='Please provide a valid reason for your escalation request.'/>
                                 <input type='submit' value='Submit'/>
                             </form>
                         </div>
                     </div>
                 </div>}
-            <div class='details-header'>
-                <h1 class="display-4">Report | {this.state.report.id}</h1>
+            <div className='details-header'>
+                <h1 className="display-4">Report | {this.state.report.id}</h1>
             </div>
 
-                <div class="row">
-                <div class="col-md-3 col-md-pull-9">
+                <div className="row">
+                <div className="col-md-3 col-md-pull-9">
 
-                    {/* <div class="card"> */}
-                        <div class="encounter-card">
+                        <div className="encounter-card">
                             <h5>Encounter Location</h5>
                             <p>{this.state.report.location}<br/>{this.state.report.city}, {this.state.report.state}</p>
                         </div>
-                    {/* </div> */}
-                        <div class="encounter-card">
-                            <h5 class="card-title">Citizen Involved</h5>
+
+                        <div className="encounter-card">
+                            <h5 className="card-title">Citizen Involved</h5>
                                 {this.state.citizen.name ?
-                                    <p class="card-text">{this.state.citizen.name}</p>
+                                    <p className="card-text">{this.state.citizen.name}</p>
                                     :
-                                    <p class="card-text">Citizen Name Not Available</p>
+                                    <p className="card-text">Citizen Name Not Available</p>
                                 }
                                 {this.props.userType !== "oversightAgency" ?
                                     null
                                     :
                                     this.state.citizen.name ?
                                         <div>
-                                        <p class="card-text">{this.state.citizen.address}</p>
-                                        <p class="card-text">{this.state.citizen.city}, {this.state.citizen.state}</p>
+                                        <p className="card-text">{this.state.citizen.address}</p>
+                                        <p className="card-text">{this.state.citizen.city}, {this.state.citizen.state}</p>
                                         {this.state.citizen.phone_number ? <p>Phone Number: {this.state.citizen.phone_number}</p> : null}
                                         {this.state.citizen.email ? <p>Email: {this.state.citizen.email}</p> : null}
                                         </div>
                                         :
-                                        <p class="card-text">Citizen Information Not Available</p>
+                                        <p className="card-text">Citizen Information Not Available</p>
                                 }
                         </div>
 
-                        <div class="encounter-card">
-                            <h5 class="card-title">Officer Involved</h5>
-                            <p class="card-text">{this.state.police.name}</p>
-                            <p class="card-text">Badge Number: {this.state.police.badge_number}</p>
-                        </div>
-
-                   
-                    
+                        <div className="encounter-card">
+                            <h5 className="card-title">Officer Involved</h5>
+                            <p className="card-text">{this.state.police.name}</p>
+                            <p className="card-text">Badge Number: {this.state.police.badge_number}</p>
+                        </div>  
                 </div>
-                <div class="col-md-9 col-md-push-3">
 
-                        <div class="encounter-card">
-                            <h5 class="card-title">Reason For Encounter</h5>
-                            <p class="card-text">{this.state.report.reason}</p>
+                <div className="col-md-9 col-md-push-3">
+
+                        <div className="encounter-card">
+                            <h5 className="card-title">Reason For Encounter</h5>
+                            <p className="card-text">{this.state.report.reason}</p>
                         </div>
 
-                        <div class="encounter-card">
-                            <h5 class="card-title">Description Of Encounter</h5>
-                            <p class="card-text">{this.state.report.incident_description}</p>
+                        <div className="encounter-card">
+                            <h5 className="card-title">Description Of Encounter</h5>
+                            <p className="card-text">{this.state.report.incident_description}</p>
                         </div>
 
-                        <div class="encounter-card">
-                            <h5 class="card-title">Resolution</h5>
-                            <p class="card-text">{this.state.report.resolution}</p>
+                        <div className="encounter-card">
+                            <h5 className="card-title">Resolution</h5>
+                            <p className="card-text">{this.state.report.resolution}</p>
                         </div>
 
-                <div class="row small-encounter-row">
-                        <div class="encounter-card">
-                            <h5 class="card-title">Arrest Made?</h5>
-                            <p class="card-text">{this.state.report.arrest ? "Yes" : "No"}</p>
+                <div className="row small-encounter-row">
+                        <div className="encounter-card">
+                            <h5 className="card-title">Arrest Made?</h5>
+                            <p className="card-text">{this.state.report.arrest ? "Yes" : "No"}</p>
                         </div>
 
-                        <div class="encounter-card">
-                            <h5 class="card-title">Was Force Used?</h5>
-                            <p class="card-text">{this.state.report.force_used ? "Yes" : "No"}</p>
+                        <div className="encounter-card">
+                            <h5 className="card-title">Was Force Used?</h5>
+                            <p className="card-text">{this.state.report.force_used ? "Yes" : "No"}</p>
                         </div>
 
-                        <div class="encounter-card">
-                            <h5 class="card-title">Date Of Encounter</h5>
-                            <p class="card-text">{new Date(this.state.report.date).toDateString()}</p>
+                        <div className="encounter-card">
+                            <h5 className="card-title">Date Of Encounter</h5>
+                            <p className="card-text">{new Date(this.state.report.date).toDateString()}</p>
                         </div>
 
-                        <div class="encounter-card">
-                            <h5 class="card-title">Time Of Encounter</h5>
-                            <p class="card-text">{new Date(this.state.report.time).toLocaleTimeString()}</p>
+                        <div className="encounter-card">
+                            <h5 className="card-title">Time Of Encounter</h5>
+                            <p className="card-text">{new Date(this.state.report.time).toLocaleTimeString()}</p>
                         </div>
 
                 </div>
 
                 </div>
                 </div>
-                {/* <dl class="col">
-                    <dt class="col-sm-3">Encounter Location:</dt>
-                    <dd class="col-sm-3">{this.state.report.location}</dd>
-                    <dd class="col-sm-3">{this.state.report.city}</dd>
-                </dl> */}
+               
+                <div className="row">
 
-                <div class="row">
-
-                    <div class='col-md-6'>
-                        {this.state.escalation ? <div class="encounter-card">
+                    <div className='col-md-6'>
+                        {this.state.escalation ? <div className="encounter-card">
                             <Escalation escalation={this.state.escalation}/>
-                        </div> : <div class="encounter-card">
+                        </div> : <div className="encounter-card">
                                 <h4>This report has not been escalated at this time.</h4>
                             </div>}
                     </div>
 
-                    <div class='col-md-6'>
-                        <div class="encounter-card">
+                    <div className='col-md-6'>
+                        <div className="encounter-card">
                             <h2>Comments From {this.state.citizen.name}</h2>
                             {this.props.userType === 'citizen' && this.props.currentUser.id === this.state.citizen.id ? <ReportCommentForm updateComment={this.updateComments}/> : null}
                         
                         
-                            {this.state.comments.length>0 ? <div class='report-comments'>{this.state.comments.map(comment => <ReportComment comment={comment} />)}</div> : <div>No Comments At This Time.</div>}
+                            {this.state.comments.length>0 ? <div className='report-comments'>{this.state.comments.map(comment => <ReportComment comment={comment} />)}</div> : <div>No Comments At This Time.</div>}
                         </div>
                     </div>
                 </div>

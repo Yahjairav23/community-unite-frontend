@@ -4,7 +4,7 @@ import CommunityFeelingsList from '../components/Community-Feelings-List'
 const communityFeelings = (props) => {
     return (
         <div>
-            <h1 class='text-center'>Community Feelings Board</h1>
+            <h1 className='text-center'>Community Feelings Board</h1>
             <CommunityFeelingsList />
         </div>
     )

@@ -15,7 +15,6 @@ function setCurrentUser(user){
 }
 
 function fetchingCurrentUser(token, userType){
-//    debugger
     return (dispatch) => {
         fetch(`http://localhost:3000/api/v1/${userType}_decode_token`, {
             headers: {
@@ -172,14 +171,12 @@ function creatingComment(commentObj){
 //////////////////////////////////
 
 function fetchedAllActions(actions){
-    // debugger
     return {
         type: "FETCHED_ALL_ACTIONS", payload: actions
     }
 }
 
 function fetchingAllActions(){
-    // debugger
     return (dispatch) => {
         fetch(ACTIONTAKEN)
         .then(resp => resp.json())
