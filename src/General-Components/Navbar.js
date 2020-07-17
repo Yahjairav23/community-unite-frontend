@@ -9,7 +9,7 @@ class navbar extends React.Component {
     render(){
         return (
             <div className='web-nav'>
-                    <div className="logo" ><a href='/'><img src={logo} /></a></div>
+                    <div className="logo" ><a href='/'><img src={logo} alt='Younite'/></a></div>
                 <nav>
                     <ul>
                         <li><a href="/community-reports">Community Reports</a></li>

@@ -16,19 +16,18 @@ class home extends React.Component {
                             Together we can regulate the system.
                         </p>
                         {/* This button triggers the modal */}
-                        <a href='#' className='btn animated-btn' data-toggle="modal" data-target="#staticBackdrop">Learn More</a>
+                        <button type='button' style={{color: '#e5e5e5'}} className='btn animated-btn' data-toggle="modal" data-target="#staticBackdrop">Learn More</button>
 
                         {/* The modal being triggered */}
-                        <div class="modal fade" id="staticBackdrop" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">About Younite</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div className="modal fade" id="staticBackdrop" data-keyboard="false" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="staticBackdropLabel">About Younite</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            {/* <div class="modal-dialog modal-dialog-scrollable"> */}
                                 <div className='modal-body'>
                                 <p style={{fontWeight: 'bold'}}>Younite was built with hopes to provide a solution to help with the on going problem of police brutality.</p> 
                                 <p>Younite requires officers to complete a report for every encounter had with a citizen, good or bad.
@@ -44,8 +43,11 @@ class home extends React.Component {
                                 There is also a feelings board, where citizens can comment on how they feel their police department has been performing.</p>
                                 <br/>
                                 <hr/>
+                                <p>Younite was built using: <span style={{fontWeight: 'bold'}}>Ruby on Rails, React.js, Javascript, Redux</span>.</p>
+                                <p>Younite was styled using: <span style={{fontWeight: 'bold'}}>Bootstrap and CSS</span>.</p>
+                                <hr/>
                                 <br/>
-                                <p>
+                                
                                 <h5 style={{fontStyle: 'italic'}}>To log in to the application through the varies user types, please review login information below:</h5>
                                 <br/>
                                 <span style={{fontWeight: 'bold', fontSize: '18px'}}>Citizen: </span><br/>
@@ -60,11 +62,10 @@ class home extends React.Component {
                                 <p style={{margin: '10px'}}><span style={{fontWeight: 'bold'}}>Username:</span> citizenguard@demo.com<br/>
                                 <span style={{fontWeight: 'bold'}}>Password:</span> password<br/></p>
                                 <br/>
-                                </p>
+                                
                                 </div>
-                            {/* </div> */}
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                             </div>
                         </div>
@@ -72,7 +73,7 @@ class home extends React.Component {
 
                     </div>
                     <div className='right-col'>
-                        <div className="home-logo"><img src={logo} className="img-fluid" alt="Responsive image"/></div>
+                        <div className="home-logo"><img src={logo} className="img-fluid" alt="Responsive Logo"/></div>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import ReportsList from '../../General-Components/Report-List-Item'
-import report from '../../Citizen-Components/components/Citizen-Profile-Report'
 
 class AgencyProfileContainer extends React.Component {
 

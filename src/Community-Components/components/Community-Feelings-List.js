@@ -20,7 +20,7 @@ const communityFeelingsList = (props) => {
             :
             null}
             <div className="row justify-content-md-center" >
-                {props.communityComments.map(comment => (
+                {descComments.map(comment => (
                     <CommunityFeeling comment={comment} key={comment.id}/>
                 ))}
             </div>

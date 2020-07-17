@@ -1,4 +1,3 @@
-const CITIZENS = "http://localhost:3000/api/v1/citizens"
 const REPORTS = "http://localhost:3000/reports"
 const COMMENTS = "http://localhost:3000/comments"
 const PD = "http://localhost:3000/police_departments"
