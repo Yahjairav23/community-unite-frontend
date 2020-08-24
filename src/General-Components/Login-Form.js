@@ -121,11 +121,14 @@ class loginForm extends React.Component {
                     }
 
                     <input className='signin-button' type='submit' value='Submit'/>
-
-                    {this.state.signUp ? 
+                    {this.props.userType === 'citizen' ?
+                    this.state.signUp ? 
                         <input className='signin-button' type='button' value='Sign In' onClick={this.signUpForm}/>
                         :
                         <input className='signin-button' type='button' value='Sign Up' onClick={this.signUpForm}/>
+                    
+                    :
+                    null
                     }
 
                 </form>
