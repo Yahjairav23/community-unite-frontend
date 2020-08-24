@@ -7,13 +7,19 @@ class loginForm extends React.Component {
     constructor(){
         super()
         this.state={
-            
+           signUp: false 
         }
     }
 
     fieldChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value 
+        })
+    }
+
+    signUpForm = () => {
+        this.setState({
+            signUp: !this.state.signUp
         })
     }
 
@@ -62,6 +68,7 @@ class loginForm extends React.Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmitForm}>
+                {!this.state.signUp ?
                     <div className='fields'>
                         <div className='username'>
                             <svg className="svg-icon" viewBox="0 0 20 20">
@@ -76,8 +83,50 @@ class loginForm extends React.Component {
                             </svg>
                             <input required className='user-input' onChange={this.fieldChange} type='password' id='password' placeholder='Password' name='password'/></div>
                     </div>
+                    :
+                    <div className='fields'>
+                        <div className='username'>
+                            <input required className='user-input' onChange={this.fieldChange} type='username' id='first_name' placeholder='First Name' name='first_name'/>
+                        </div>
+                        <div className='username'>
+                            <input required className='user-input' onChange={this.fieldChange} type='username' id='last_name' placeholder='Last Name' name='last_name'/>
+                        </div>
+                        <div className='username'>
+                            <input required className='user-input' onChange={this.fieldChange} type='username' id='address' placeholder='Street Address' name='address'/>
+                        </div>
+                        <div className='username'>
+                            <input required className='user-input' onChange={this.fieldChange} type='username' id='city' placeholder='City' name='city'/>
+                        </div>
+                        <div className='username'>
+                            <input required className='user-input' onChange={this.fieldChange} type='username' id='state' placeholder='State' name='state'/>
+                        </div>
+                        <div className='username'>
+                            <input required className='user-input' onChange={this.fieldChange} type='username' id='phone_number' placeholder='Phone Number' name='phone_number'/>
+                        </div>
+                        <div className='username'>
+                            <input required className='user-input' onChange={this.fieldChange} type='username' id='email' placeholder='Email' name='email'/>
+                        </div>
+                        <div className='username'>
+                            <input required className='user-input' onChange={this.fieldChange} type='username' id='birthday' placeholder='Date of Birth' name='birthday'/>
+                        </div>
+                        <div className='username'>
+                            <input required className='user-input' onChange={this.fieldChange} type='username' id='state_id' placeholder='State Issued ID#' name='state_id'/>
+                        </div>
+                        
+                        
+                        <div className='password'>
+                            <input required className='user-input' onChange={this.fieldChange} type='password' id='password' placeholder='Password' name='password'/>
+                        </div>
+                    </div>
+                    }
 
                     <input className='signin-button' type='submit' value='Submit'/>
+
+                    {this.state.signUp ? 
+                        <input className='signin-button' type='button' value='Sign In' onClick={this.signUpForm}/>
+                        :
+                        <input className='signin-button' type='button' value='Sign Up' onClick={this.signUpForm}/>
+                    }
 
                 </form>
 

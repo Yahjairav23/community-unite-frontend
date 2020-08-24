@@ -260,7 +260,7 @@ code {
   margin: 0;
 
   width: 500px;
-  /* height: 650px; */
+  
   padding: 60px 35px 35px 35px;
   border-radius: 40px;
   background: #C2D3CD;
@@ -282,7 +282,7 @@ code {
 }
 
 .login-div{
-  height: 650px;
+  height: max-content;
 }
 .sm-report-form-container{
   height: 1100px;
@@ -372,6 +372,9 @@ code {
   box-shadow: 3px 3px 8px #e5e5e5,
               -3px -3px -8px #ffffff;
   transition: 0.5s;
+}
+.signin-button {
+  margin-bottom: 1em;
 }
 
 .signin-button:hover{
