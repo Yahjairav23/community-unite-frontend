@@ -26,6 +26,8 @@ class loginForm extends React.Component {
     handleSubmitForm = (e) => {
         e.preventDefault()
         const obj = {...this.state, userType: this.props.userType}
+        //Need to add an if statement that differentiates a create new user from log in user
+        
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
             headers: {
