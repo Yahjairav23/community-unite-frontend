@@ -26,7 +26,6 @@ class loginForm extends React.Component {
     handleSubmitForm = (e) => {
         e.preventDefault()
         const obj = {...this.state, userType: this.props.userType}
-        //Need to add an if statement that differentiates a create new user from log in user
 
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
@@ -70,7 +69,6 @@ class loginForm extends React.Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmitForm}>
-                {/* {!this.state.signUp ? */}
                     <div className='fields'>
                         <div className='username'>
                             <svg className="svg-icon" viewBox="0 0 20 20">
@@ -85,53 +83,10 @@ class loginForm extends React.Component {
                             </svg>
                             <input required className='user-input' onChange={this.fieldChange} type='password' id='password' placeholder='Password' name='password'/></div>
                     </div>
-                    {/* // :
-                    // <div className='fields'>
-                    //     <div className='username'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='username' id='first_name' placeholder='First Name' name='first_name'/>
-                    //     </div>
-                    //     <div className='username'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='username' id='last_name' placeholder='Last Name' name='last_name'/>
-                    //     </div>
-                    //     <div className='username'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='username' id='address' placeholder='Street Address' name='address'/>
-                    //     </div>
-                    //     <div className='username'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='username' id='city' placeholder='City' name='city'/>
-                    //     </div>
-                    //     <div className='username'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='username' id='state' placeholder='State' name='state'/>
-                    //     </div>
-                    //     <div className='username'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='username' id='phone_number' placeholder='Phone Number' name='phone_number'/>
-                    //     </div>
-                    //     <div className='username'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='username' id='email' placeholder='Email' name='email'/>
-                    //     </div>
-                    //     <div className='username'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='username' id='birthday' placeholder='Date of Birth' name='birthday'/>
-                    //     </div>
-                    //     <div className='username'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='username' id='state_id' placeholder='State Issued ID#' name='state_id'/>
-                    //     </div>
-                        
-                        
-                    //     <div className='password'>
-                    //         <input required className='user-input' onChange={this.fieldChange} type='password' id='password' placeholder='Password' name='password'/>
-                    //     </div>
-                    // </div>
-                    // } */}
+                    
 
                     <input className='signin-button' type='submit' value='Submit'/>
-                    {/* {this.props.userType === 'citizen' ?
-                    this.state.signUp ? 
-                        <input className='signin-button' type='button' value='Sign In' onClick={this.signUpForm}/>
-                        :
-                        <input className='signin-button' type='button' value='Sign Up' onClick={this.signUpForm}/>
-                    
-                    :
-                    null
-                    } */}
+                   
 
                 </form>
 
